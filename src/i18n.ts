@@ -52,6 +52,8 @@ const ui: Record<string, Record<Lang, string>> = {
   "nb.mindmap.title":  { en: "Mind map", zh: "思维导图" },
   "nb.mindmap.zoom":   { en: "Click to enlarge", zh: "点击放大" },
   "nb.zoom.close":     { en: "Close", zh: "关闭" },
+  "nb.pdf.preview":    { en: "Preview", zh: "预览" },
+  "nb.pdf.download":   { en: "Download", zh: "下载" },
   "nb.mindmap.empty":  { en: "Mind map goes here in Phase 2.", zh: "思维导图将在二阶段加入。" },
   "nb.briefing":       { en: "Briefing PDF", zh: "简报 PDF" },
   "nb.briefing.empty": { en: "Briefing PDF coming in Phase 2.", zh: "简报 PDF 将在二阶段加入。" },

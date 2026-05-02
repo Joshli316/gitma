@@ -151,6 +151,9 @@ export async function hydratePdfSlots(root: ParentNode = document): Promise<void
     el.dataset.empty = "false";
     const title = kind === "briefing" ? t("nb.briefing") : t("nb.studyguide");
     el.innerHTML = `<strong>${title}</strong>
-      <a class="btn btn--accent" href="${path}" download style="margin-top:.5rem">↓ ${title}</a>`;
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem">
+        <a class="btn" href="${path}" target="_blank" rel="noopener" aria-label="${escapeHtml(t("nb.pdf.preview"))} ${escapeHtml(title)}">👁 ${t("nb.pdf.preview")}</a>
+        <a class="btn btn--accent" href="${path}" download aria-label="${escapeHtml(t("nb.pdf.download"))} ${escapeHtml(title)}">↓ ${t("nb.pdf.download")}</a>
+      </div>`;
   }
 }
