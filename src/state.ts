@@ -2,6 +2,14 @@ import type { AppState, Lang, Theme } from "./types";
 
 const STORAGE_KEY = "gitma";
 
+function detectInitialTheme(): "light" | "dark" {
+  if (typeof window === "undefined") return "light";
+  try {
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+  } catch { /* SSR or unsupported */ }
+  return "light";
+}
+
 const DEFAULT_STATE: AppState = {
   lang: "en",
   theme: "light",
@@ -13,7 +21,7 @@ const DEFAULT_STATE: AppState = {
 export function loadState(): AppState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { ...DEFAULT_STATE };
+    if (!raw) return { ...DEFAULT_STATE, theme: detectInitialTheme() };
     const parsed = JSON.parse(raw);
     if (typeof parsed !== "object" || parsed === null) throw new Error("bad");
     const merged: AppState = { ...DEFAULT_STATE, ...parsed };

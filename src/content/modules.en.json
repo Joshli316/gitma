@@ -202,6 +202,7 @@
       "intro": "**GitHub Pages** turns a repo into a public website at `username.github.io/repo-name`. Free, fast, no servers. **GitHub Actions** are tiny robots that run on events ('on push', 'on PR opened') — they can lint your code, run tests, deploy your site, send a notification. Both are free for personal projects.",
       "asymmetric": "scribble",
       "sections": [
+        { "type": "diagram", "diagramId": "pages-compare" },
         { "type": "prose", "body": "**GitHub Pages vs Cloudflare Pages** — both are free static hosting; both deploy on push.\n\n- **GitHub Pages** is simplest if your project already lives on GitHub. Limit: 1 GB/site, soft 100 GB/month bandwidth.\n- **Cloudflare Pages** has unlimited bandwidth, faster global CDN, native Workers integration, and previews-per-PR. It's a small extra step (add a project at `pages.cloudflare.com`) but worth it for anything you'd share publicly.\n\nMost of the projects in this tutorial family deploy to Cloudflare Pages — `wrangler pages deploy dist`." },
         { "type": "sticky", "title": "When to use which", "body": "GitHub Pages — internal tools, docs, anything tiny.\n\nCloudflare Pages — anything you'll share publicly or that needs serious bandwidth." },
         { "type": "prose", "body": "Actions live in `.github/workflows/<name>.yml`. The simplest one runs on every push and reports whether the build still works. Toy example below:" },

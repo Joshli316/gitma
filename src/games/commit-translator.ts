@@ -1,6 +1,7 @@
 import { t, getLang } from "../i18n";
 import { recordGameScore } from "../state";
 import { escapeHtml, shuffle } from "../utils";
+import { scoreCommit } from "./commit-score";
 import games from "../content/games.json";
 
 interface CT {
@@ -73,38 +74,8 @@ export function wireCommitTranslator(): void {
   }
 
   function score(c: CT, msg: string) {
-    const trimmed = msg.trim();
-    const issues: string[] = [];
-    let pts = 0;
-
-    // verb-first
-    if (/^(Add|Fix|Update|Remove|Refactor|Rename|Move|Bump|Upgrade|Drop|Replace|Document|Improve|Clean|Restore|Revert|Patch|Style|Test|Implement|Introduce|Wire|Hook)\b/i.test(trimmed)) {
-      pts += 30;
-    } else issues.push(t("game.commit.feedback.verb"));
-
-    // imperative — penalize past tense -ed or 3rd-person -s
-    if (!/^(Added|Fixed|Updated|Removed|Refactored|Renamed|Moved|Adds|Fixes|Updates|Removes)\b/i.test(trimmed)) {
-      pts += 10;
-    } else issues.push(t("game.commit.feedback.imperative"));
-
-    // length
-    if (trimmed.length > 0 && trimmed.length <= 72) pts += 25;
-    else issues.push(t("game.commit.feedback.length"));
-
-    // mentions the thing — heuristic: token from intent in message
-    const intentTokens = (c.intent.en.toLowerCase()
-      .replace(/[^a-z0-9 .-]/g, " ")
-      .split(/\s+/)
-      .filter((w) => w.length > 3 && !["this", "that", "with", "from", "into", "page", "have", "your", "where"].includes(w)));
-    const msgLower = trimmed.toLowerCase();
-    const hits = intentTokens.filter((w) => msgLower.includes(w)).length;
-    if (hits >= 1) pts += 25;
-    else issues.push(t("game.commit.feedback.thing"));
-
-    // capitalization bonus
-    if (/^[A-Z]/.test(trimmed)) pts += 10;
-
-    pts = Math.min(100, Math.max(0, pts));
+    const { score: pts, issues: keys } = scoreCommit({ message: msg, intent: c.intent.en });
+    const issues = keys.map((k) => t(k));
     totalScore += pts;
 
     const fb = document.getElementById("ct-feedback")!;

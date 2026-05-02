@@ -19,22 +19,31 @@ export function renderNbSlot(slot: NbSlot): string {
   `;
 }
 
-/** Probe HEAD for each slot path; if 200, replace the empty-state with the actual asset. */
+let manifestPromise: Promise<Set<string>> | null = null;
+
+/** One-shot manifest fetch: GET /assets/notebooklm/manifest.json (single 404 if missing, vs 5). */
+function loadManifest(): Promise<Set<string>> {
+  if (!manifestPromise) {
+    manifestPromise = fetch("assets/notebooklm/manifest.json", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : { available: [] }))
+      .then((m) => new Set<string>(Array.isArray(m.available) ? m.available : []))
+      .catch(() => new Set<string>());
+  }
+  return manifestPromise;
+}
+
+/** Replace empty-state stickies with actual assets, gated by the manifest. */
 export async function hydrateNbSlots(root: ParentNode = document): Promise<void> {
   const slots = root.querySelectorAll<HTMLElement>("[data-nb-slot]");
+  if (slots.length === 0) return;
+  const manifest = await loadManifest();
   for (const el of Array.from(slots)) {
     const kind = el.dataset.nbSlot as NbSlot;
-    if (!kind) continue;
+    if (!kind || !manifest.has(kind)) continue;
     const path = ASSETS[kind];
     if (!path) continue;
-    try {
-      const res = await fetch(path, { method: "HEAD" });
-      if (!res.ok) continue;
-      el.dataset.empty = "false";
-      el.innerHTML = renderHydrated(kind, path);
-    } catch {
-      // network or 404 — leave empty-state
-    }
+    el.dataset.empty = "false";
+    el.innerHTML = renderHydrated(kind, path);
   }
 }
 
@@ -91,16 +100,16 @@ export function renderPdfSlots(): string {
 
 export async function hydratePdfSlots(root: ParentNode = document): Promise<void> {
   const slots = root.querySelectorAll<HTMLElement>("[data-nb-pdf]");
+  if (slots.length === 0) return;
+  const manifest = await loadManifest();
   for (const el of Array.from(slots)) {
     const kind = el.dataset.nbPdf!;
+    const manifestKey = kind === "briefing" ? "briefing" : "studyguide";
+    if (!manifest.has(manifestKey)) continue;
     const path = `assets/notebooklm/${kind === "briefing" ? "briefing.pdf" : "study-guide.pdf"}`;
-    try {
-      const res = await fetch(path, { method: "HEAD" });
-      if (!res.ok) continue;
-      el.dataset.empty = "false";
-      const title = kind === "briefing" ? t("nb.briefing") : t("nb.studyguide");
-      el.innerHTML = `<strong>${title}</strong>
-        <a class="btn btn--accent" href="${path}" download style="margin-top:.5rem">↓ ${title}</a>`;
-    } catch { /* ignore */ }
+    el.dataset.empty = "false";
+    const title = kind === "briefing" ? t("nb.briefing") : t("nb.studyguide");
+    el.innerHTML = `<strong>${title}</strong>
+      <a class="btn btn--accent" href="${path}" download style="margin-top:.5rem">↓ ${title}</a>`;
   }
 }

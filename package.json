@@ -6,7 +6,7 @@
     "dev": "concurrently \"esbuild src/main.ts --bundle --outfile=dist/app.js --sourcemap --watch --target=es2022\" \"npx @tailwindcss/cli -i styles/main.css -o dist/styles.css --watch\" \"node scripts/copy-assets.mjs --watch\" \"npx serve dist -p 5173\"",
     "build": "esbuild src/main.ts --bundle --outfile=dist/app.js --minify --target=es2022 && npx @tailwindcss/cli -i styles/main.css -o dist/styles.css --minify && node scripts/copy-assets.mjs",
     "deploy": "npm run build && wrangler pages deploy dist --project-name gitma",
-    "test": "npx tsx test/smoke.ts"
+    "test": "npx tsx test/smoke.ts && npx tsx test/commit-score.test.ts"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.0",

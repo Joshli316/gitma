@@ -202,6 +202,7 @@
       "intro": "**GitHub Pages** 把一个 repo 变成一个公开网站，地址是 `username.github.io/repo-name`。免费、快、不用自己管服务器。**GitHub Actions** 是一群小机器人，碰到事件就跑（'on push'、'on PR opened'）——它们能跑 lint、跑测试、部署网站、发通知。两样东西对个人项目都是免费的。",
       "asymmetric": "scribble",
       "sections": [
+        { "type": "diagram", "diagramId": "pages-compare" },
         { "type": "prose", "body": "**GitHub Pages vs Cloudflare Pages** —— 都是免费静态托管，都是 push 就部署。\n\n- **GitHub Pages** 最省事，前提是你的项目本来就在 GitHub 上。限制：单站 1 GB，软上限 100 GB / 月带宽。\n- **Cloudflare Pages** 带宽不限、全球 CDN 更快、原生集成 Workers，还能给每条 PR 自动起预览。多花一点点工夫（去 `pages.cloudflare.com` 加一个项目），但凡是要公开分享的东西都值得这一步。\n\n这套教程里大多数项目都部署在 Cloudflare Pages 上——`wrangler pages deploy dist`。" },
         { "type": "sticky", "title": "怎么选", "body": "GitHub Pages —— 内部工具、文档，啥都小的东西。\n\nCloudflare Pages —— 要公开分享，或者带宽吃紧的东西。" },
         { "type": "prose", "body": "Actions 文件住在 `.github/workflows/<name>.yml`。最简单的一个，每次 push 都跑一下，告诉你 build 还没坏掉。下面是个小例子：" },

@@ -7,6 +7,12 @@ import { hydrateNbSlots, hydrateVideoLoaders } from "./components/notebooklm-slo
 
 const app = document.getElementById("app")!;
 
+const BASE_TITLE = "GitMa 吉码 — GitHub Tutorial for Claude Coders";
+
+function setTitle(suffix: string | null): void {
+  document.title = suffix ? `${suffix} · GitMa 吉码` : BASE_TITLE;
+}
+
 function shell(content: string): string {
   return `${renderHeader()}${content}${renderFooter()}`;
 }
@@ -55,6 +61,7 @@ initTheme();
 route("/", async () => {
   showLoading();
   try {
+    setTitle(null);
     const { renderHome } = await import("./screens/home");
     render(await renderHome());
     await hydrateNbSlots(app);
@@ -68,6 +75,7 @@ route("/", async () => {
 route("/lab", async () => {
   showLoading();
   try {
+    setTitle(t("lab.title"));
     const { renderLab, wireLab } = await import("./screens/lab");
     render(`
       <main id="main" class="shell">
@@ -91,7 +99,8 @@ route("/m/:id", async (params) => {
   showLoading();
   try {
     const { renderModule } = await import("./screens/module");
-    const { html, wire } = await renderModule(params.id);
+    const { html, wire, title } = await renderModule(params.id);
+    setTitle(title);
     render(html);
     if (typeof wire === "function") await wire();
     await hydrateNbSlots(app);

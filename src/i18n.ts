@@ -126,9 +126,24 @@ const ui: Record<string, Record<Lang, string>> = {
 
 let currentLang: Lang = "en";
 
+/** LXGW WenKai (~3MB CJK brush font) lazy-loaded only when Chinese is active. */
+const LXGW_HREF = "https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css";
+const LXGW_SRI = "sha384-KiXbx4H8g5WzsoWp+1s62zOzXEJNjRp/obm1oFBhyBn4T5IJFF+a3p+Oa3hzsZeI";
+
+function ensureLxgwLoaded(): void {
+  if (document.querySelector(`link[href="${LXGW_HREF}"]`)) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = LXGW_HREF;
+  link.integrity = LXGW_SRI;
+  link.crossOrigin = "anonymous";
+  document.head.appendChild(link);
+}
+
 export function initI18n(): void {
   currentLang = loadState().lang;
   document.documentElement.lang = currentLang;
+  if (currentLang === "zh") ensureLxgwLoaded();
 }
 
 export function t(key: string, replacements?: Record<string, string | number>): string {
@@ -149,6 +164,7 @@ export function setLanguage(lang: Lang): void {
   currentLang = lang;
   document.documentElement.lang = lang;
   setLang(lang);
+  if (lang === "zh") ensureLxgwLoaded();
 }
 
 export function toggleLang(): Lang {

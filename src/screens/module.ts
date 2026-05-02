@@ -7,11 +7,12 @@ import { terminalBlock } from "../components/terminal-block";
 import { renderNbSlot, renderPdfSlots } from "../components/notebooklm-slots";
 import type { ModuleContent, ModuleSection } from "../types";
 
-import { renderRepoAnatomy } from "../components/diagrams/repo-anatomy";
+import { renderRepoAnatomy, wireRepoAnatomy } from "../components/diagrams/repo-anatomy";
 import { renderLocalVsRemote } from "../components/diagrams/local-vs-remote";
 import { renderCcPipeline } from "../components/diagrams/cc-pipeline";
 import { renderBranchTree } from "../components/diagrams/branch-tree";
 import { renderCloneFlow } from "../components/diagrams/clone-flow";
+import { renderPagesCompare } from "../components/diagrams/pages-compare";
 
 import { renderLightningQuizUI, wireLightningQuiz } from "../games/lightning-quiz";
 import { renderRepoDetectiveUI, wireRepoDetective } from "../games/repo-detective";
@@ -23,11 +24,11 @@ import { renderCommandBuilder, wireCommandBuilder } from "../components/command-
 import { renderIssueBuilder, wireIssueBuilder } from "../components/issue-builder";
 import { renderLab, wireLab } from "./lab";
 
-export async function renderModule(id: string): Promise<{ html: string; wire: () => Promise<void> | void }> {
+export async function renderModule(id: string): Promise<{ html: string; wire: () => Promise<void> | void; title: string | null }> {
   const data = await loadModules();
   const idx = data.modules.findIndex((m) => m.id === id);
   if (idx < 0) {
-    return { html: notFound(), wire: () => {} };
+    return { html: notFound(), wire: () => {}, title: t("err.404.title") };
   }
   const m = data.modules[idx];
   const prev = data.modules[idx - 1];
@@ -82,6 +83,7 @@ export async function renderModule(id: string): Promise<{ html: string; wire: ()
   `;
 
   return {
+    title: m.title,
     html,
     wire: async () => {
       hookCompleteButton(m.id, next?.id);
@@ -132,6 +134,7 @@ function renderDiagram(id: string): string {
     case "cc-pipeline":    return renderCcPipeline();
     case "branch-tree":    return renderBranchTree();
     case "clone-flow":     return renderCloneFlow();
+    case "pages-compare":  return renderPagesCompare();
     default: return `<div class="sketch-card lean-2"><p style="margin:0;color:var(--ink-soft)">[diagram: ${escapeHtml(id)}]</p></div>`;
   }
 }
@@ -192,6 +195,3 @@ function hookCompleteButton(modId: string, nextId?: string): void {
 function notFound(): string {
   return `<main id="main" class="shell" style="padding-top:3rem"><h1>${t("err.404.title")}</h1><p>${t("err.404.body")}</p><a class="btn" href="#/">${t("mod.back-home")}</a></main>`;
 }
-
-// Re-exported wireRepoAnatomy from the diagram module
-import { wireRepoAnatomy } from "../components/diagrams/repo-anatomy";
