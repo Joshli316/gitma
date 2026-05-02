@@ -76,7 +76,8 @@ export async function hydrateVideoLoaders(root: ParentNode = document): Promise<
       const id = String(data.ytId || "").replace(/[^A-Za-z0-9_-]/g, "");
       if (!id) continue;
       el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}" loading="lazy"
-        referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-presentation"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         style="width:100%;aspect-ratio:16/9;border:0;border-radius:6px"
         allowfullscreen title="GitHub video overview"></iframe>`;
     } catch {
