@@ -1,0 +1,238 @@
+{
+  "modules": [
+    {
+      "id": "m1",
+      "num": 1,
+      "emoji": "?",
+      "title": "The 5Ws + How",
+      "subtitle": "What GitHub is, who it's for, and why you're suddenly using it.",
+      "intro": "Let's start where most tutorials skip past. **GitHub** is a website that holds folders of code — and the history of every change ever made to those folders. When you build something with **Claude Code** and run `git push`, your work lives in one of those folders, in the cloud, with a public link.\n\nThis module is the lay of the land. The other nine drill in.",
+      "asymmetric": "sticky",
+      "game": "lightning-quiz",
+      "notebooklm": ["video", "audio", "mindmap"],
+      "sections": [
+        { "type": "prose", "body": "Imagine a Google Doc, but for folders of code. That's the elevator pitch — and it's almost right. The two big differences:\n\n**1) Time travel is built in.** Every saved version is recorded. You can rewind a file (or the whole project) to any point in its history. No 'final_v2_FINAL.docx' chaos.\n\n**2) Many people can edit the same project safely.** Two collaborators don't overwrite each other — they each work on a copy, then *propose* their changes. Owner reviews, then merges." },
+        { "type": "sticky", "title": "5Ws + How", "body": "**Who** — anyone who writes code, plus more and more people who don't (designers, writers, hobbyists).\n\n**What** — a website hosting `git` repositories, plus tools (Issues, PRs, Pages, Actions) wrapped around them.\n\n**Where** — github.com (the website) and `~/Desktop/Projects/your-app` (a copy on your laptop).\n\n**When** — every time you `git push`, GitHub gets the new version.\n\n**Why** — backup, sharing, history, collaboration, free hosting (Pages).\n\n**How** — `git` is the engine, GitHub is the website. Claude Code drives `git` for you." },
+        { "type": "prose", "body": "If you've made anything with Claude Code, you already use this without thinking — you said 'push it to GitHub' and it just worked. This site is here to fill in the picture so the next time something's weird (`detached HEAD`, merge conflicts, a stuck `gh auth`), you know what story you're inside." },
+        { "type": "terminal", "lines": [
+          "$ cd ~/Desktop/Projects/my-app",
+          "$ git init                           # turn this folder into a repo",
+          "$ git add .                          # stage everything",
+          "$ git commit -m \"Initial commit\"   # save a snapshot",
+          "$ gh repo create my-app --public --source=. --push",
+          "  # ↑ creates the repo on GitHub and pushes — done."
+        ] },
+        { "type": "prose", "body": "Try the lightning quiz below. Six questions, answer with your gut — getting them wrong is the point, the explanations are where the learning happens." }
+      ]
+    },
+    {
+      "id": "m2",
+      "num": 2,
+      "emoji": "📦",
+      "title": "Anatomy of a Repository",
+      "subtitle": "What's actually inside a 'repo'.",
+      "intro": "A **repository** (repo) is a folder. The folder happens to be tracked by `git`, which means it has a hidden `.git/` subfolder full of bookkeeping. Everything else is just files. Once you see the cross-section, you'll never panic at `README.md`, `LICENSE`, or `.gitignore` again.",
+      "asymmetric": "arrow",
+      "sections": [
+        { "type": "diagram", "diagramId": "repo-anatomy" },
+        { "type": "prose", "body": "Hover (or tap on mobile) the labelled parts. The bits worth memorizing:\n\n**`README.md`** — the front door. The first thing people read on github.com.\n\n**`LICENSE`** — what others are allowed to do with your code. No license means 'all rights reserved' by default. Use **MIT** if you want people to use it freely.\n\n**`.gitignore`** — files `git` should pretend don't exist. `node_modules/`, `.env`, `dist/` always go here.\n\n**`.git/`** — the magic folder. Don't touch it. Holds every snapshot ever taken." },
+        { "type": "sticky", "title": "Mental model", "body": "Repo = a folder + a time machine + a front-door page. That's it." },
+        { "type": "terminal", "lines": [
+          "$ ls -la my-app/",
+          "  drwxr-xr-x  .git/                # ← the time machine",
+          "  -rw-r--r--  .gitignore",
+          "  -rw-r--r--  LICENSE",
+          "  -rw-r--r--  README.md            # ← the front door",
+          "  -rw-r--r--  package.json",
+          "  drwxr-xr-x  src/"
+        ] },
+        { "type": "prose", "body": "When Claude Code creates a project, it scaffolds these files for you. Now you know which file is doing what." }
+      ]
+    },
+    {
+      "id": "m3",
+      "num": 3,
+      "emoji": "🔍",
+      "title": "Finding Repositories",
+      "subtitle": "Treasure hunting on github.com.",
+      "intro": "GitHub hosts ~400 million repos. Most of them are someone's homework. The good ones — the libraries you'll actually use, the projects worth studying — share a few tells. This module teaches you to read those tells in a few seconds.",
+      "asymmetric": "stain",
+      "game": "repo-detective",
+      "sections": [
+        { "type": "prose", "body": "Three things I look at, in order:\n\n**1) Stars** — like Twitter likes, but slower. 1k+ usually means 'this is real'. 10k+ means 'industry standard'. Less than 100 stars isn't bad — it means 'small or new'. Stars are a signal, not a verdict.\n\n**2) Last commit date** — top-right of the file list. If the most recent change is from 2019, the project is probably abandoned. 'Updated last week' is the green flag.\n\n**3) Issues / PRs activity** — the tabs near the top. Lots of *open* issues with recent comments = active community. Hundreds of *closed* PRs = maintainers who actually merge things." },
+        { "type": "sticky", "title": "Don't fall for", "body": "Polished READMEs alone. Slick logos and screenshots can hide unmaintained code. Always check the dates." },
+        { "type": "prose", "body": "Search bar tricks worth knowing:\n\n- `language:python` — only Python repos\n- `stars:>1000` — only popular ones\n- `pushed:>2025-01-01` — only ones updated this year\n- combine: `claude code language:typescript stars:>100`\n\nGitHub Trending (`github.com/trending`) shows what's hot right now — language-filterable, daily/weekly/monthly. Excellent way to discover what people are excited about." },
+        { "type": "terminal", "lines": [
+          "# search via the gh CLI:",
+          "$ gh search repos \"claude code\" --language=typescript --stars=\">100\"",
+          "  anthropics/claude-code",
+          "  ...",
+          "$ gh repo view anthropics/claude-code --web   # opens in browser"
+        ] },
+        { "type": "prose", "body": "Now play **Repo Detective** below — five real repos, one clue card each. Guess what each one does before peeking at the answer." }
+      ]
+    },
+    {
+      "id": "m4",
+      "num": 4,
+      "emoji": "📖",
+      "title": "Reading a README",
+      "subtitle": "A README is a contract. Here's how to read it in 30 seconds.",
+      "intro": "A good `README.md` answers four questions in the first screenful: **what is this**, **how do I install it**, **how do I use it**, **why should I care**. Once you know the standard sections, you can scan an unfamiliar repo at a glance.",
+      "asymmetric": "scribble",
+      "game": "spot-readme",
+      "sections": [
+        { "type": "prose", "body": "The seven sections you'll see again and again, in roughly this order:\n\n1. **Title + tagline** — what it is, in one line.\n2. **Hero / demo** — animated GIF, screenshot, or live link.\n3. **Features** — bullet list of what's included.\n4. **Install** — `npm install`, `pip install`, `brew install`. Commands you can copy.\n5. **Usage** — minimal example showing the thing actually working.\n6. **License** — MIT, Apache, GPL — what you're allowed to do.\n7. **Contributing** — how outsiders can help (mostly: 'open a PR')." },
+        { "type": "sticky", "title": "Red flag", "body": "No `Install` section. If they don't tell you how to run it, the project is probably half-built." },
+        { "type": "prose", "body": "The drag-drop game below shows you a real anonymized README. Drag each label onto the block where it belongs. Aim for 7/7 the first time." },
+        { "type": "terminal", "lines": [
+          "$ cat README.md | head -20      # peek at top of any README",
+          "# claude-code",
+          "",
+          "> Coding agent that understands your codebase.",
+          "",
+          "## Install",
+          "  brew install anthropic/cli/claude",
+          "",
+          "## Usage",
+          "  claude   # interactive session in your terminal"
+        ] }
+      ]
+    },
+    {
+      "id": "m5",
+      "num": 5,
+      "emoji": "📥",
+      "title": "Cloning & Using",
+      "subtitle": "Bringing a repo onto your laptop and running it.",
+      "intro": "**Cloning** means downloading a copy of the repo (with full history) onto your machine. After that, the project is yours to read, run, edit, fork — within the rules of its license.",
+      "asymmetric": "tape",
+      "sections": [
+        { "type": "prose", "body": "Two ways:\n\n**`git clone <url>`** — the original. Works everywhere `git` is installed.\n\n**`gh repo clone <owner>/<repo>`** — the modern one. Same result, less typing. Auto-uses your GitHub auth.\n\nBoth land you in a new folder named after the repo. From there you `cd` into it and follow the README." },
+        { "type": "diagram", "diagramId": "clone-flow" },
+        { "type": "embed", "id": "command-builder" },
+        { "type": "terminal", "lines": [
+          "$ gh repo clone anthropics/claude-code",
+          "  Cloning into 'claude-code'...",
+          "  remote: Counting objects: 4231, done.",
+          "  Receiving objects: 100% (4231/4231), 12.4 MiB | 8.1 MiB/s",
+          "$ cd claude-code",
+          "$ npm install         # or whatever the README says",
+          "$ npm run dev"
+        ] },
+        { "type": "sticky", "title": "License literacy", "body": "**MIT** — do anything, just keep the copyright line. Most permissive.\n\n**Apache 2.0** — like MIT, plus a patent grant.\n\n**GPL** — if you redistribute, your changes must also be open-source.\n\n**No license** — all rights reserved. You can read it; you can't legally reuse it." },
+        { "type": "prose", "body": "Cloning is *read-mostly*. To save your changes back, you'd need either to be a collaborator on the original repo, or to **fork** it (make your own copy on github.com) and push to that. Forks are how almost all open-source contribution starts." }
+      ]
+    },
+    {
+      "id": "m6",
+      "num": 6,
+      "emoji": "🤝",
+      "title": "GitHub × Claude Code",
+      "subtitle": "Your actual workflow, drawn out so you understand it.",
+      "intro": "This is the keystone module — the one that makes all the others click. When you ask Claude Code to 'push it to GitHub', what's *actually* happening? Five steps, three tools, one diagram you'll never forget.",
+      "asymmetric": "doodle",
+      "game": "commit-translator",
+      "sections": [
+        { "type": "diagram", "diagramId": "cc-pipeline" },
+        { "type": "prose", "body": "The five-step pipeline:\n\n**1) Code lives in your project folder** (`~/Desktop/Projects/my-app`). Claude Code edits files there.\n\n**2) `git` watches the folder.** `git status` shows what changed. `git add .` says 'I want to save these changes'.\n\n**3) `git commit -m \"...\"` saves a snapshot.** A commit is a labelled bookmark in time. Good labels matter — that's the Commit Translator game below.\n\n**4) `git push` sends new commits to GitHub** over the network.\n\n**5) `gh` is the GitHub CLI** — it lets you do GitHub-website-things from the terminal. Create repos, open PRs, view issues, all without leaving Claude Code." },
+        { "type": "sticky", "title": "Three tools, one job", "body": "`git` = save points (local).\n`github.com` = the website (cloud).\n`gh` = the bridge that makes them friendly." },
+        { "type": "terminal", "lines": [
+          "$ brew install gh                    # install once",
+          "$ gh auth login                      # open browser, sign in",
+          "  ✓ Logged in as your-username",
+          "$ gh repo create my-app --public --source=. --push",
+          "$ gh pr create --title \"Add login\" --body \"Closes #12\"",
+          "$ gh repo view --web                 # open this repo in browser"
+        ] },
+        { "type": "prose", "body": "When Claude Code does its thing, it's running these same commands behind the curtain. If something fails (auth expired, conflicting changes, no remote), you'll see the error — and now you'll know which step it came from." },
+        { "type": "callout", "title": "What 'good commit message' really means", "lean": "r", "body": "**Verb-first.** `Add` `Fix` `Update` `Remove` `Refactor`. Imperative, like you're giving an order to the codebase.\n\n**Under 72 characters.** Long enough to explain, short enough to scan.\n\n**Mention the thing.** `Fix login` ✓ — `Fix bug` ✗.\n\nThe Commit Translator below grades your messages against this rubric." }
+      ]
+    },
+    {
+      "id": "m7",
+      "num": 7,
+      "emoji": "🌿",
+      "title": "Branches & Pull Requests",
+      "subtitle": "Working in parallel without stepping on each other.",
+      "intro": "A **branch** is a parallel timeline. You start one, make changes, and the main project keeps going untouched. When you're happy, you open a **Pull Request (PR / 合并请求)** — a formal proposal: 'please merge my branch into main'.",
+      "asymmetric": "arrow",
+      "game": "local-vs-remote",
+      "sections": [
+        { "type": "diagram", "diagramId": "branch-tree" },
+        { "type": "prose", "body": "The flow, every time:\n\n1. `git checkout -b feature/login` — make a branch, switch to it.\n2. Edit files. `git commit` your changes (could be many commits).\n3. `git push -u origin feature/login` — push the branch to GitHub.\n4. `gh pr create` — open a PR.\n5. Reviewer leaves comments. You push more commits. The PR updates automatically.\n6. Approval → 'Squash and merge' → branch is folded into `main`. Delete the branch." },
+        { "type": "sticky", "title": "Why bother", "body": "Branches let you *try* something risky without breaking `main`. If it works, merge. If it doesn't, throw the branch away. Zero lasting damage." },
+        { "type": "terminal", "lines": [
+          "$ git checkout -b feature/login",
+          "  Switched to a new branch 'feature/login'",
+          "$ # ... edit files, git add, git commit ...",
+          "$ git push -u origin feature/login",
+          "$ gh pr create --fill   # uses your commit messages as the PR body",
+          "  https://github.com/you/my-app/pull/7"
+        ] },
+        { "type": "prose", "body": "**Local vs remote** confuses everyone at first. Local = your laptop. Remote = GitHub. `git commit` is local-only until you `git push`. Below — drag the actions into the right buckets to drill it in." }
+      ]
+    },
+    {
+      "id": "m8",
+      "num": 8,
+      "emoji": "💬",
+      "title": "Issues, Discussions, Projects",
+      "subtitle": "How GitHub becomes a project tracker.",
+      "intro": "An **Issue** is a thread for a single bug, feature request, or question. **Discussions** are like a forum. **Projects** are kanban boards. All three live next to your code, which is the whole point — context never leaves the room.",
+      "asymmetric": "tape",
+      "sections": [
+        { "type": "prose", "body": "The trick to a good issue is the **template**. Even a casual one:\n\n**Title** — verb-first, specific. `Fix dark-mode contrast on settings page` beats `Bug`.\n\n**Steps to reproduce** — numbered, no skipped steps. The reader should be able to copy-paste them.\n\n**Expected vs actual** — what you thought would happen, what actually happened.\n\n**Environment** — OS, browser, Claude Code version. Saves a round-trip.\n\nTry it in the converter below — paste a vague complaint, get a polished issue draft." },
+        { "type": "embed", "id": "issue-builder" },
+        { "type": "sticky", "title": "Labels matter", "body": "`bug` `enhancement` `good first issue` `help wanted`. They're how strangers find issues they can help with. Use them generously." },
+        { "type": "terminal", "lines": [
+          "$ gh issue create --title \"Fix dark-mode contrast\" \\",
+          "    --body \"$(cat <<'EOF'\n## Steps\n1. Open settings page\n2. Toggle dark mode\n## Expected\nHigh-contrast text\n## Actual\nGray on dark gray, unreadable\nEOF\n)\"",
+          "  https://github.com/you/my-app/issues/12"
+        ] },
+        { "type": "prose", "body": "Issues, PRs, and commits can reference each other: write `Closes #12` in a PR description and merging it auto-closes that issue. This is how a healthy repo stays organized — a web of cross-references that never goes stale because it lives next to the code." }
+      ]
+    },
+    {
+      "id": "m9",
+      "num": 9,
+      "emoji": "🚀",
+      "title": "Pages & Actions intro",
+      "subtitle": "Free hosting + tiny robots that run on every push.",
+      "intro": "**GitHub Pages** turns a repo into a public website at `username.github.io/repo-name`. Free, fast, no servers. **GitHub Actions** are tiny robots that run on events ('on push', 'on PR opened') — they can lint your code, run tests, deploy your site, send a notification. Both are free for personal projects.",
+      "asymmetric": "scribble",
+      "sections": [
+        { "type": "prose", "body": "**GitHub Pages vs Cloudflare Pages** — both are free static hosting; both deploy on push.\n\n- **GitHub Pages** is simplest if your project already lives on GitHub. Limit: 1 GB/site, soft 100 GB/month bandwidth.\n- **Cloudflare Pages** has unlimited bandwidth, faster global CDN, native Workers integration, and previews-per-PR. It's a small extra step (add a project at `pages.cloudflare.com`) but worth it for anything you'd share publicly.\n\nMost of the projects in this tutorial family deploy to Cloudflare Pages — `wrangler pages deploy dist`." },
+        { "type": "sticky", "title": "When to use which", "body": "GitHub Pages — internal tools, docs, anything tiny.\n\nCloudflare Pages — anything you'll share publicly or that needs serious bandwidth." },
+        { "type": "prose", "body": "Actions live in `.github/workflows/<name>.yml`. The simplest one runs on every push and reports whether the build still works. Toy example below:" },
+        { "type": "terminal", "lines": [
+          "# .github/workflows/build.yml",
+          "name: build",
+          "on: [push]",
+          "jobs:",
+          "  build:",
+          "    runs-on: ubuntu-latest",
+          "    steps:",
+          "      - uses: actions/checkout@v4",
+          "      - uses: actions/setup-node@v4",
+          "        with: { node-version: 20 }",
+          "      - run: npm ci",
+          "      - run: npm run build"
+        ] },
+        { "type": "prose", "body": "Don't memorize the YAML. Recognize the shape: **name → on → jobs → steps**. When something fails on push, a red ✗ appears next to the commit on github.com — click it, you get the full log. That's enough to debug 90% of CI problems." }
+      ]
+    },
+    {
+      "id": "m10",
+      "num": 10,
+      "emoji": "🧪",
+      "title": "Practice Lab",
+      "subtitle": "Five games, thirty flashcards, downloadable PDFs.",
+      "intro": "You've made it through the modules. The Lab is where you keep what you learned warm. Replay any game until it's automatic, flip flashcards on a coffee break, grab the briefing PDF if you want a paper copy.",
+      "asymmetric": "stain",
+      "sections": [
+        { "type": "embed", "id": "lab" }
+      ]
+    }
+  ]
+}

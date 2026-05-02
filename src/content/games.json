@@ -1,0 +1,166 @@
+{
+  "lightningQuiz": [
+    {
+      "id": "lq1",
+      "prompt": { "en": "What is GitHub, in one phrase?", "zh": "GitHub 是什么？用一句话说。" },
+      "options": {
+        "en": ["A faster code editor", "A website that hosts code folders + their full history", "A free chatbot for programmers", "A version of Google Drive"],
+        "zh": ["一个更快的代码编辑器", "一个托管代码文件夹和完整历史的网站", "一个程序员用的免费聊天机器人", "一个 Google Drive 的版本"]
+      },
+      "answer": 1,
+      "rationale": {
+        "en": "It's a website built around `git` repositories — code folders with built-in time travel. The other tools (Issues, PRs, Pages, Actions) are wrapped around that core idea.",
+        "zh": "它是一个围绕 git 仓库建起来的网站——带时间机器的代码文件夹。其他工具（Issues、PRs、Pages、Actions）都是围绕这个核心展开的。"
+      }
+    },
+    {
+      "id": "lq2",
+      "prompt": { "en": "What does `git commit` do?", "zh": "`git commit` 是做什么的？" },
+      "options": {
+        "en": ["Uploads your code to GitHub", "Saves a labelled snapshot of your changes (locally)", "Deletes the previous version", "Tells the world about your bug"],
+        "zh": ["把代码上传到 GitHub", "在本地保存一份带说明的改动快照", "删除上一个版本", "向全世界宣布你的 bug"]
+      },
+      "answer": 1,
+      "rationale": {
+        "en": "A commit is a *local* save point. To share it with GitHub, you still need to `git push`.",
+        "zh": "commit 是一个本地的保存点。要分享给 GitHub，还需要 `git push`。"
+      }
+    },
+    {
+      "id": "lq3",
+      "prompt": { "en": "What's a Pull Request (PR / 合并请求)?", "zh": "Pull Request（PR / 合并请求）是什么？" },
+      "options": {
+        "en": ["A request for someone to download your code", "A formal proposal to merge a branch into another", "An automated code review", "A way to undo a commit"],
+        "zh": ["请求别人下载你代码的方式", "把一条分支并入另一条的正式申请", "一种自动代码审查", "撤销 commit 的方法"]
+      },
+      "answer": 1,
+      "rationale": {
+        "en": "A PR is a *proposal* — 'please merge this branch'. Reviewers comment, you push fixes, and only when approved does it merge.",
+        "zh": "PR 是一份提议——'请合并这条分支'。审阅人留言，你推 fix，批准后才会合并。"
+      }
+    },
+    {
+      "id": "lq4",
+      "prompt": { "en": "Where does code in `~/Desktop/Projects/my-app/` live?", "zh": "`~/Desktop/Projects/my-app/` 里的代码住在哪？" },
+      "options": {
+        "en": ["On GitHub's servers", "On your laptop only — until you push", "Both, automatically synced", "In `iCloud`"],
+        "zh": ["在 GitHub 的服务器上", "只在你电脑上，直到你 push", "两边都有，自动同步", "在 iCloud 里"]
+      },
+      "answer": 1,
+      "rationale": {
+        "en": "Local stays local. `git push` is what sends commits to the remote. Until then, GitHub doesn't know about your changes.",
+        "zh": "本地的就是本地的。`git push` 才会把 commit 发到远程。在那之前，GitHub 不知道你做了改动。"
+      }
+    },
+    {
+      "id": "lq5",
+      "prompt": { "en": "If a repo has no LICENSE file, what does that mean?", "zh": "如果一个 repo 没有 LICENSE 文件，意味着什么？" },
+      "options": {
+        "en": ["You can use it freely", "It's public domain", "All rights reserved by default — you can read but not legally reuse", "MIT by default"],
+        "zh": ["你可以随便用", "它是公共领域的", "默认保留所有权利——你可以看，但不能合法重用", "默认就是 MIT"]
+      },
+      "answer": 2,
+      "rationale": {
+        "en": "No license = all rights reserved. Reading is fine; copying or building on it isn't legally clear. If you want others to use it, *add* a license (MIT is the friendliest).",
+        "zh": "没有 license 就是保留所有权利。阅读没问题，但复制或基于它再开发没有法律依据。想让别人用，就加一份 license（MIT 最友好）。"
+      }
+    },
+    {
+      "id": "lq6",
+      "prompt": { "en": "What's `gh`?", "zh": "`gh` 是什么？" },
+      "options": {
+        "en": ["A typo for `git`", "GitHub's command-line tool — does GitHub-website-things from your terminal", "A package manager", "A shorter `git`"],
+        "zh": ["`git` 的拼写错误", "GitHub 的命令行工具——在终端里完成网站操作", "一个包管理器", "一个更短的 `git`"]
+      },
+      "answer": 1,
+      "rationale": {
+        "en": "`gh` is the GitHub CLI — `gh repo create`, `gh pr create`, `gh issue list`. `git` handles the version-control engine; `gh` is the bridge to the website.",
+        "zh": "`gh` 是 GitHub 命令行——`gh repo create`、`gh pr create`、`gh issue list`。`git` 是版本控制引擎，`gh` 是通向网站的桥。"
+      }
+    }
+  ],
+
+  "repoDetective": [
+    { "id": "rd1", "name": "anthropics/claude-code", "language": "TypeScript", "stars": "55k+",
+      "clue": { "en": "Built by Anthropic. Lives at the terminal. Edits whole codebases when you describe what you want.", "zh": "Anthropic 出品。住在终端里。你描述要什么，它改整个代码库。" },
+      "url": "https://github.com/anthropics/claude-code",
+      "reveal": { "en": "Claude Code itself — the CLI you probably used to build half your projects.", "zh": "就是 Claude Code 本人——你大概用过它做了一半的项目。" } },
+    { "id": "rd2", "name": "vitejs/vite", "language": "TypeScript", "stars": "73k+",
+      "clue": { "en": "Frontend build tool. Famous for being instant. French word for 'fast'.", "zh": "前端构建工具。以快闻名。法语里的'快'。" },
+      "url": "https://github.com/vitejs/vite",
+      "reveal": { "en": "Vite — Evan You's instant dev server / bundler.", "zh": "Vite——尤雨溪做的极速开发服务器和打包器。" } },
+    { "id": "rd3", "name": "ggerganov/llama.cpp", "language": "C++", "stars": "70k+",
+      "clue": { "en": "Lets you run big language models on a laptop. Plain C++. Pioneered local-LLM acceleration.", "zh": "让你在笔记本上跑大语言模型。纯 C++。开启了本地 LLM 加速的先河。" },
+      "url": "https://github.com/ggerganov/llama.cpp",
+      "reveal": { "en": "llama.cpp — the project that made running Llama-class models on consumer hardware possible.", "zh": "llama.cpp——让消费级硬件跑 Llama 级别模型成为可能。" } },
+    { "id": "rd4", "name": "pallets/flask", "language": "Python", "stars": "67k+",
+      "clue": { "en": "Tiny Python web framework. 'Micro' on purpose. Powers half of beginner Python tutorials.", "zh": "小巧的 Python web 框架。故意做得'微'。一半 Python 入门教程都用它。" },
+      "url": "https://github.com/pallets/flask",
+      "reveal": { "en": "Flask — Armin Ronacher's microframework, basis for countless first 'hello world' web apps.", "zh": "Flask——Armin Ronacher 写的微框架，无数人第一个 web app 的基石。" } },
+    { "id": "rd5", "name": "tailwindlabs/tailwindcss", "language": "TypeScript", "stars": "82k+",
+      "clue": { "en": "Utility-first CSS. Class names like `bg-coral` and `p-4`. Loved and hated equally.", "zh": "工具优先的 CSS。class 长得像 `bg-coral`、`p-4`。爱恨各半。" },
+      "url": "https://github.com/tailwindlabs/tailwindcss",
+      "reveal": { "en": "Tailwind CSS — Adam Wathan's framework. The 'utility classes' style is now everywhere.", "zh": "Tailwind CSS——Adam Wathan 做的框架。'工具类'风格如今处处可见。" } },
+    { "id": "rd6", "name": "modelcontextprotocol/servers", "language": "TypeScript", "stars": "12k+",
+      "clue": { "en": "Reference implementations for an open protocol that lets AI assistants talk to your tools (Slack, GitHub, your DB).", "zh": "一个开放协议的参考实现，让 AI 助手能调用你的工具（Slack、GitHub、数据库）。" },
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "reveal": { "en": "MCP servers — the official reference set for Model Context Protocol.", "zh": "MCP servers——Model Context Protocol 的官方参考集合。" } }
+  ],
+
+  "spotReadme": {
+    "labels": [
+      { "id": "title",     "label":  { "en": "Title + tagline",     "zh": "标题 + 一句话介绍" } },
+      { "id": "hero",      "label":  { "en": "Demo / hero image",   "zh": "演示 / 主图" } },
+      { "id": "features",  "label":  { "en": "Features list",       "zh": "功能列表" } },
+      { "id": "install",   "label":  { "en": "Install instructions","zh": "安装说明" } },
+      { "id": "usage",     "label":  { "en": "Usage example",       "zh": "使用示例" } },
+      { "id": "license",   "label":  { "en": "License",             "zh": "License 许可证" } },
+      { "id": "contrib",   "label":  { "en": "Contributing",        "zh": "贡献指南" } }
+    ],
+    "blocks": [
+      { "id": "title",     "match": "title",    "preview": "# tinytools\n> a tiny set of dev helpers.",                                  "previewZh": "# tinytools\n> 一套小巧的开发助手。" },
+      { "id": "hero",      "match": "hero",     "preview": "![demo](./demo.gif)",                                                          "previewZh": "![demo](./demo.gif)" },
+      { "id": "features",  "match": "features", "preview": "## What's inside\n- ✓ command runner\n- ✓ file watcher\n- ✓ pretty logs",      "previewZh": "## 功能\n- ✓ 命令执行器\n- ✓ 文件监听\n- ✓ 漂亮日志" },
+      { "id": "install",   "match": "install",  "preview": "## Install\n```\nnpm install tinytools\n```",                                  "previewZh": "## 安装\n```\nnpm install tinytools\n```" },
+      { "id": "usage",     "match": "usage",    "preview": "## Use it\n```ts\nimport { run } from 'tinytools';\nrun('build');\n```",      "previewZh": "## 使用\n```ts\nimport { run } from 'tinytools';\nrun('build');\n```" },
+      { "id": "license",   "match": "license",  "preview": "## License\nMIT — © 2026",                                                    "previewZh": "## License\nMIT — © 2026" },
+      { "id": "contrib",   "match": "contrib",  "preview": "## Contributing\nPRs welcome. See `CONTRIBUTING.md`.",                         "previewZh": "## 贡献\n欢迎 PR。详见 `CONTRIBUTING.md`。" }
+    ]
+  },
+
+  "commitTranslator": [
+    { "id": "ct1",
+      "intent": { "en": "You added a dark-mode toggle to the settings page.",                    "zh": "你给设置页加了一个深色模式开关。" },
+      "good":   ["Add dark-mode toggle to settings page", "Add dark mode toggle to Settings"],
+      "hint":   { "en": "Verb-first: Add. Mention the thing: dark-mode toggle on settings page.", "zh": "动词开头：Add。点出对象：settings 页的深色模式开关。" } },
+    { "id": "ct2",
+      "intent": { "en": "You fixed a bug where the login button did nothing on Safari.",         "zh": "你修了 Safari 上登录按钮无反应的 bug。" },
+      "good":   ["Fix login button no-op on Safari", "Fix Safari login button"],
+      "hint":   { "en": "Verb-first: Fix. Be specific about Safari and the button.",             "zh": "动词开头：Fix。点出 Safari 和那个按钮。" } },
+    { "id": "ct3",
+      "intent": { "en": "You renamed the i18n.ts file to i18n/index.ts and updated all imports.","zh": "你把 i18n.ts 重命名为 i18n/index.ts 并更新了所有 import。" },
+      "good":   ["Rename i18n.ts to i18n/index.ts and update imports", "Move i18n into a folder"],
+      "hint":   { "en": "Verb-first: Rename or Move. Mention what you renamed.",                 "zh": "动词开头：Rename 或 Move。点出改了什么名字。" } },
+    { "id": "ct4",
+      "intent": { "en": "You upgraded esbuild from 0.20 to 0.24 because the old one had a CVE.",  "zh": "你把 esbuild 从 0.20 升到 0.24，因为旧版本有 CVE。" },
+      "good":   ["Upgrade esbuild to 0.24 to patch CVE", "Bump esbuild from 0.20 to 0.24"],
+      "hint":   { "en": "Verb-first: Upgrade or Bump. The 'why' (CVE) is a great bonus.",         "zh": "动词开头：Upgrade 或 Bump。说出 'why'（CVE）会加分。" } },
+    { "id": "ct5",
+      "intent": { "en": "You removed an unused helper function and the test that covered it.",   "zh": "你删了一个没用的工具函数和它的测试。" },
+      "good":   ["Remove unused parseDate helper and its test", "Remove dead parseDate code"],
+      "hint":   { "en": "Verb-first: Remove. Name the helper if you can.",                       "zh": "动词开头：Remove。能说出函数名最好。" } }
+  ],
+
+  "localVsRemote": [
+    { "id": "a1", "label": { "en": "git commit",              "zh": "git commit" },              "bin": "local"  },
+    { "id": "a2", "label": { "en": "git push",                "zh": "git push" },                "bin": "both"   },
+    { "id": "a3", "label": { "en": "Open a Pull Request",     "zh": "开 Pull Request / 合并请求" }, "bin": "remote" },
+    { "id": "a4", "label": { "en": "Edit a file",             "zh": "编辑一个文件" },             "bin": "local"  },
+    { "id": "a5", "label": { "en": "Star a repo",             "zh": "给 repo 点星" },             "bin": "remote" },
+    { "id": "a6", "label": { "en": "git status",              "zh": "git status" },              "bin": "local"  },
+    { "id": "a7", "label": { "en": "git pull",                "zh": "git pull" },                "bin": "both"   },
+    { "id": "a8", "label": { "en": "Merge a PR",              "zh": "合并一个 PR" },              "bin": "remote" },
+    { "id": "a9", "label": { "en": "Run tests",               "zh": "跑测试" },                   "bin": "local"  },
+    { "id": "a10","label": { "en": "Open an Issue",           "zh": "开 Issue" },                 "bin": "remote" }
+  ]
+}

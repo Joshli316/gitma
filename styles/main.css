@@ -1,0 +1,460 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GitMa 吉码 — sketchbook / cream paper aesthetic
+   Light = cream paper. Dark = chalkboard.
+   ============================================================ */
+
+:root {
+  --ink: #1f1b16;
+  --ink-soft: #3a342c;
+  --paper: #faf6ec;
+  --paper-2: #f3ecd8;
+  --paper-3: #ece4cc;
+  --rule: #2b2620;
+  --coral: #e26d5c;
+  --mustard: #e3a72f;
+  --teal: #2a9d8f;
+  --lavender: #8a7fbf;
+  --sticky: #fff27a;
+  --sticky-shd: rgba(0, 0, 0, .18);
+  --terminal-bg: #1f1b16;
+  --terminal-fg: #faf6ec;
+  --terminal-accent: #e3a72f;
+}
+
+[data-theme="dark"] {
+  --ink: #ece7d7;
+  --ink-soft: #c9c4b3;
+  --paper: #1c2a2a;
+  --paper-2: #243433;
+  --paper-3: #2c3d3c;
+  --rule: #ece7d7;
+  --coral: #d97a6c;
+  --mustard: #d4a85a;
+  --teal: #5fb3a8;
+  --lavender: #a99fcf;
+  --sticky: #f7e572;
+  --sticky-shd: rgba(0, 0, 0, .55);
+  --terminal-bg: #0c1414;
+  --terminal-fg: #ece7d7;
+  --terminal-accent: #d4a85a;
+}
+
+@theme {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-rule: var(--rule);
+  --color-coral: var(--coral);
+  --color-mustard: var(--mustard);
+  --color-teal: var(--teal);
+  --color-lavender: var(--lavender);
+  --color-sticky: var(--sticky);
+
+  --font-sans: 'Nunito', system-ui, sans-serif;
+  --font-marker: 'Patrick Hand', 'LXGW WenKai', 'Noto Sans SC', cursive;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ----- Base ----- */
+html { font-size: 18px; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Nunito', system-ui, sans-serif;
+  line-height: 1.65;
+  min-height: 100dvh;
+
+  /* subtle paper grain */
+  background-image:
+    radial-gradient(rgba(43, 38, 32, .035) 1px, transparent 1px),
+    radial-gradient(rgba(43, 38, 32, .025) 1px, transparent 1px);
+  background-size: 22px 22px, 14px 14px;
+  background-position: 0 0, 11px 7px;
+}
+
+/* CJK fonts auto-pick LXGW WenKai when in Chinese */
+html[lang="zh"] body { font-family: 'LXGW WenKai', 'Nunito', system-ui, sans-serif; }
+html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
+html[lang="zh"] .marker, html[lang="zh"] .sticky {
+  font-family: 'LXGW WenKai', 'Patrick Hand', cursive;
+}
+
+h1, h2, h3, h4, .marker {
+  font-family: 'Patrick Hand', 'LXGW WenKai', cursive;
+  color: var(--ink);
+  letter-spacing: .01em;
+  line-height: 1.15;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p { margin: 0 0 1rem; }
+a { color: var(--coral); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; text-decoration-color: rgba(226, 109, 92, .55); }
+a:hover { text-decoration-color: var(--coral); }
+
+::selection { background: var(--mustard); color: var(--ink); }
+
+/* ----- Layout helpers ----- */
+.shell {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+@media (min-width: 768px) { .shell { padding: 0 2rem 6rem; } }
+
+/* ----- Sketch card ----- */
+.sketch-card {
+  background: var(--paper-2);
+  border: 2.5px solid var(--rule);
+  border-radius: 14px 18px 12px 20px / 16px 12px 20px 14px;
+  box-shadow:
+    3px 3px 0 var(--rule),
+    6px 6px 18px rgba(0, 0, 0, .08);
+  position: relative;
+  padding: 1.5rem 1.5rem;
+}
+
+.sketch-card::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid var(--rule);
+  border-radius: inherit;
+  opacity: .35;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .sketch-card { box-shadow: 3px 3px 0 var(--rule), 6px 6px 18px rgba(0, 0, 0, .35); }
+
+/* card rotations — alternate, never repeat adjacency. Apply via .lean-* utility */
+.lean-1 { transform: rotate(-1.5deg); }
+.lean-2 { transform: rotate( 1deg);   }
+.lean-3 { transform: rotate(-0.8deg); }
+.lean-4 { transform: rotate( 1.4deg); }
+
+/* ----- Sticky note ----- */
+.sticky {
+  background: var(--sticky);
+  color: #2a2a1a;
+  padding: 1rem 1.1rem;
+  transform: rotate(-1.4deg);
+  box-shadow: 4px 6px 12px var(--sticky-shd);
+  font-family: 'Patrick Hand', 'LXGW WenKai', cursive;
+  font-size: 1.15rem;
+  max-width: 22rem;
+  border-radius: 2px;
+  display: inline-block;
+  position: relative;
+}
+.sticky:nth-of-type(even) { transform: rotate(1.1deg); }
+
+.sticky--lean-r { transform: rotate(2.2deg); }
+.sticky--lean-l { transform: rotate(-2.4deg); }
+
+/* ----- Terminal block (the SHARP anchor) ----- */
+.terminal {
+  background: var(--terminal-bg);
+  color: var(--terminal-fg);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  border-radius: 6px; /* hard, deliberate */
+  border: 0;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  position: relative;
+  box-shadow: 4px 4px 0 var(--rule);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--terminal-bg);
+  color: var(--terminal-fg);
+  padding: .55rem .9rem .15rem;
+  border-radius: 6px 6px 0 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .8rem;
+  opacity: .85;
+}
+.terminal-header + .terminal { border-radius: 0 0 6px 6px; }
+
+.terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+.terminal-dot-r { background: #ff605c; }
+.terminal-dot-y { background: #ffbd44; }
+.terminal-dot-g { background: #00ca4e; }
+.terminal-label { margin-left: .5rem; opacity: .7; }
+
+.terminal .prompt { color: var(--terminal-accent); user-select: none; }
+.terminal .comment { color: #9aa39a; }
+.terminal .var { color: #f7e572; }
+.terminal .str { color: #80d8c0; }
+
+/* ----- Buttons ----- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: 'Patrick Hand', 'LXGW WenKai', cursive;
+  font-size: 1.1rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2.5px solid var(--rule);
+  padding: .55rem 1.1rem;
+  border-radius: 12px 16px 10px 14px / 14px 10px 16px 12px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .15s;
+  box-shadow: 2px 2px 0 var(--rule);
+  min-height: 44px;
+}
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--rule); }
+.btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--rule); }
+
+.btn--primary { background: var(--coral); color: #fff; }
+.btn--accent  { background: var(--mustard); }
+.btn--ghost   { background: transparent; }
+
+/* ----- Pill / chip ----- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: .95rem;
+  padding: .15rem .65rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.chip--coral { background: rgba(226,109,92,.15); border-color: var(--coral); }
+.chip--teal  { background: rgba(42,157,143,.15); border-color: var(--teal); }
+.chip--mustard { background: rgba(227,167,47,.18); border-color: var(--mustard); }
+
+/* ----- Brand label (kept English in both languages) ----- */
+.brand { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+/* ----- Hand-drawn underline highlight (asymmetric break helper) ----- */
+.scribble-under {
+  position: relative;
+  display: inline-block;
+}
+.scribble-under::after {
+  content: "";
+  position: absolute;
+  left: -4px; right: -4px; bottom: -6px;
+  height: 8px;
+  background: var(--mustard);
+  opacity: .55;
+  z-index: -1;
+  filter: url(#wobble);
+  border-radius: 4px;
+}
+
+/* ----- Coffee stain (used as M3 asymmetric break) ----- */
+.coffee-stain {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(120, 70, 30, .14) 50%, rgba(120, 70, 30, .04) 70%, transparent 80%);
+  pointer-events: none;
+}
+
+/* ----- Progress checkmark ----- */
+.checkmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border: 2.5px solid var(--rule);
+  border-radius: 50% 48% 52% 50% / 48% 52% 50% 50%;
+  background: var(--paper-2);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+.checkmark--done { background: var(--mustard); }
+
+/* ----- DnD targets (used by /lib/dnd.ts) ----- */
+.dnd-bin {
+  border: 2.5px dashed var(--rule);
+  border-radius: 14px 18px 12px 16px / 16px 12px 18px 14px;
+  background: var(--paper-2);
+  padding: 1rem;
+  min-height: 8rem;
+}
+.dnd-bin[data-over="true"] { background: rgba(227,167,47,.25); }
+.dnd-bin[data-correct="true"] { border-color: var(--teal); }
+.dnd-bin[data-wrong="true"] { border-color: var(--coral); }
+
+.dnd-chip {
+  display: inline-block;
+  background: var(--paper);
+  border: 2px solid var(--rule);
+  border-radius: 8px 12px 6px 10px / 10px 6px 12px 8px;
+  padding: .4rem .85rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  margin: .25rem;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+.dnd-chip[data-selected="true"] { background: var(--mustard); transform: rotate(-2deg); }
+.dnd-chip[data-placed="true"] { opacity: .6; cursor: default; }
+
+/* ----- Sticky note empty-state (NotebookLM slots before Phase 2) ----- */
+.empty-slot {
+  background: var(--sticky);
+  color: #2a2a1a;
+  padding: 1.25rem 1.4rem;
+  transform: rotate(-1deg);
+  font-family: 'Patrick Hand', 'LXGW WenKai', cursive;
+  font-size: 1.05rem;
+  box-shadow: 4px 6px 12px var(--sticky-shd);
+  border-radius: 2px;
+  border-left: 6px solid var(--coral);
+  max-width: 32rem;
+}
+.empty-slot strong { color: var(--coral); display: block; margin-bottom: .25rem; font-size: 1.15rem; }
+
+/* ----- Skip link ----- */
+.skip-link {
+  position: absolute; top: -100%; left: 0;
+  background: var(--ink); color: var(--paper);
+  padding: .5rem 1rem; z-index: 100;
+  font-family: 'JetBrains Mono', monospace;
+}
+.skip-link:focus { top: 0; }
+
+/* ----- Focus rings ----- */
+:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+[tabindex="-1"]:focus { outline: none; }
+
+/* ----- Touch targets ----- */
+@media (pointer: coarse) {
+  button, a, .dnd-chip, [role="button"] { min-height: 44px; }
+}
+
+/* ----- Reduced motion ----- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .lean-1, .lean-2, .lean-3, .lean-4, .sticky, .sticky--lean-l, .sticky--lean-r { transform: none; }
+}
+
+/* ----- Mobile guards ----- */
+@media (max-width: 480px) {
+  html { font-size: 17px; }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.6rem; }
+  body { overflow-x: hidden; }
+  .terminal { font-size: .82rem; padding: .9rem 1rem; }
+  .sketch-card { padding: 1.2rem 1.1rem; }
+}
+
+/* ----- Scrollbar ----- */
+* { scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--rule); opacity: .4; border-radius: 4px; }
+
+/* ----- SR-only ----- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
+
+/* ----- Header ----- */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem; max-width: 64rem; margin: 0 auto;
+  border-bottom: 1.5px dashed var(--rule);
+}
+.site-header .brand-mark {
+  font-family: 'Patrick Hand', 'LXGW WenKai', cursive;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--ink);
+  display: inline-flex; gap: .4rem; align-items: baseline;
+}
+.site-header .brand-mark .zh { font-size: 1.2rem; opacity: .7; }
+.site-header .controls { display: flex; gap: .5rem; }
+
+/* ----- Footer ----- */
+.site-footer {
+  border-top: 1.5px dashed var(--rule);
+  padding: 1.5rem 1.25rem;
+  max-width: 64rem; margin: 4rem auto 0;
+  font-family: 'Patrick Hand', 'LXGW WenKai', cursive;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* ----- Module-page asymmetric break devices ----- */
+.asymmetric-arrow {
+  position: absolute;
+  pointer-events: none;
+  filter: url(#wobble);
+}
+
+/* ----- Quiz / game shared ----- */
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--paper-2);
+  border: 2.5px solid var(--rule);
+  border-radius: 12px 16px 10px 14px / 14px 10px 16px 12px;
+  padding: .9rem 1.1rem;
+  margin: .5rem 0;
+  font-family: 'Patrick Hand', 'LXGW WenKai', cursive;
+  font-size: 1.15rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .12s, transform .12s;
+}
+.quiz-option:hover { background: var(--paper-3); transform: translate(-1px, -1px); }
+.quiz-option[data-state="right"] { background: rgba(42,157,143,.25); border-color: var(--teal); }
+.quiz-option[data-state="wrong"] { background: rgba(226,109,92,.18); border-color: var(--coral); }
+
+/* ----- Lists ----- */
+.prose ul { padding-left: 1.4rem; margin: 0 0 1rem; }
+.prose ul li { margin-bottom: .35rem; }
+.prose ul li::marker { color: var(--coral); }
+.prose code {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--paper-3);
+  padding: .1rem .4rem;
+  border-radius: 4px;
+  font-size: .92em;
+}
+.prose strong { color: var(--coral); }
+
+/* ----- Hover hotspot (used in M2 SVG) ----- */
+.hotspot {
+  cursor: pointer;
+  transition: filter .15s;
+}
+.hotspot:hover, .hotspot[data-active="true"] { filter: drop-shadow(0 0 6px var(--mustard)); }

@@ -1,0 +1,238 @@
+{
+  "modules": [
+    {
+      "id": "m1",
+      "num": 1,
+      "emoji": "?",
+      "title": "五问一答",
+      "subtitle": "GitHub 是什么、给谁用、你怎么突然就在用它了。",
+      "intro": "我们从大多数教程跳过的地方开始。**GitHub** 是一个网站，用来存放装着代码的文件夹——以及那些文件夹里每一次改动的历史。当你用 **Claude Code** 写完东西，跑一句 `git push`，你的成果就住进了云端的某个文件夹里，还附带一个公开的链接。\n\n这个模块帮你把地图先看一遍，剩下九个模块再钻细节。",
+      "asymmetric": "sticky",
+      "game": "lightning-quiz",
+      "notebooklm": ["video", "audio", "mindmap"],
+      "sections": [
+        { "type": "prose", "body": "想象一个 Google Doc，但它装的是一整个代码文件夹。这个比喻八九不离十。两个关键差别：\n\n**1）时间旅行是内建的。** 每次保存的版本都有记录。你可以把某个文件（或者整个项目）倒回到历史上的任意一刻。再也不会有 'final_v2_FINAL.docx' 这种灾难。\n\n**2）多人改同一个项目也不会出事。** 两个协作者不会互相覆盖——他们各自在副本上改，然后 *提议* 自己的修改。所有者审一下，然后合并进来。" },
+        { "type": "sticky", "title": "五问一答", "body": "**Who 谁在用** —— 写代码的人，加上越来越多不写代码的人（设计师、写作者、爱好者）。\n\n**What 是什么** —— 一个托管 `git` 仓库的网站，外加一圈包裹起来的工具（Issues、PRs、Pages、Actions）。\n\n**Where 在哪里** —— github.com（网站）和 `~/Desktop/Projects/your-app`（你笔记本上的副本）。\n\n**When 什么时候** —— 每次你 `git push`，GitHub 就拿到新版本。\n\n**Why 为什么** —— 备份、分享、历史、协作、免费托管（Pages）。\n\n**How 怎么做** —— `git` 是引擎，GitHub 是网站。Claude Code 替你开 `git`。" },
+        { "type": "prose", "body": "如果你已经用 Claude Code 做过任何东西，你其实早就在用这套，只是没意识到——你说一句 'push 到 GitHub'，它就跑通了。这个网站要做的，是把背后的全图补给你，下次出现奇怪情况（`detached HEAD`、合并冲突、`gh auth` 卡住）的时候，你知道自己身处哪一段故事里。" },
+        { "type": "terminal", "lines": [
+          "$ cd ~/Desktop/Projects/my-app",
+          "$ git init                           # turn this folder into a repo",
+          "$ git add .                          # stage everything",
+          "$ git commit -m \"Initial commit\"   # save a snapshot",
+          "$ gh repo create my-app --public --source=. --push",
+          "  # ↑ creates the repo on GitHub and pushes — done."
+        ] },
+        { "type": "prose", "body": "试一下底下的闪电小测。六道题，凭直觉答——答错才是重点，讲解里才有真正的学习。" }
+      ]
+    },
+    {
+      "id": "m2",
+      "num": 2,
+      "emoji": "📦",
+      "title": "仓库解剖",
+      "subtitle": "一个 'repo' 里到底装了什么。",
+      "intro": "**repository**（仓库，repo）就是个文件夹。这个文件夹被 `git` 跟踪着，意思是它有一个隐藏的 `.git/` 子文件夹，里面装着账本。剩下的全是普通文件而已。看过一次剖面图，以后再也不会被 `README.md`、`LICENSE`、`.gitignore` 吓到。",
+      "asymmetric": "arrow",
+      "sections": [
+        { "type": "diagram", "diagramId": "repo-anatomy" },
+        { "type": "prose", "body": "把鼠标移到（手机上点一下）标注的部分。值得记住的几个：\n\n**`README.md`** —— 大门口。github.com 上别人最先看到的就是它。\n\n**`LICENSE`** —— 别人能拿你的代码做什么。没写许可证默认就是 'all rights reserved'（保留全部权利）。想让别人放心用，选 **MIT**。\n\n**`.gitignore`** —— 让 `git` 假装看不见的文件。`node_modules/`、`.env`、`dist/` 永远丢这里。\n\n**`.git/`** —— 魔法文件夹。别动它。每一次的快照都在里面。" },
+        { "type": "sticky", "title": "心智模型", "body": "Repo = 一个文件夹 + 一台时光机 + 一个门面页。就这么简单。" },
+        { "type": "terminal", "lines": [
+          "$ ls -la my-app/",
+          "  drwxr-xr-x  .git/                # ← the time machine",
+          "  -rw-r--r--  .gitignore",
+          "  -rw-r--r--  LICENSE",
+          "  -rw-r--r--  README.md            # ← the front door",
+          "  -rw-r--r--  package.json",
+          "  drwxr-xr-x  src/"
+        ] },
+        { "type": "prose", "body": "Claude Code 帮你建项目的时候，这些文件会自动搭好。现在你知道每个文件各自在干嘛了。" }
+      ]
+    },
+    {
+      "id": "m3",
+      "num": 3,
+      "emoji": "🔍",
+      "title": "寻宝：找好仓库",
+      "subtitle": "在 github.com 上挖宝。",
+      "intro": "GitHub 上托管着大约 4 亿个 repo，绝大多数是别人的作业。真正好的那些——你以后会用上的库、值得拆开学的项目——都有几个共同信号。这个模块教你几秒钟就能读懂这些信号。",
+      "asymmetric": "stain",
+      "game": "repo-detective",
+      "sections": [
+        { "type": "prose", "body": "我会按顺序看三件事：\n\n**1) Stars（星标）** —— 像 Twitter 的赞，但慢一点。1k+ 通常意味着 '这是真东西'，10k+ 表示 '行业标准'。少于 100 颗星不一定差——可能只是 '小众或新项目'。星标是信号，不是判决。\n\n**2) 最近一次 commit 的时间** —— 在文件列表的右上角。如果最近一次改动停在 2019 年，这个项目大概率被废弃了。'Updated last week' 才是绿灯。\n\n**3) Issues / PRs 的活跃度** —— 顶部那几个标签。一堆 *open* 的 issues 而且最近还有评论，说明社区活着；上百个 *closed* 的 PRs 说明维护者真的在合并东西。" },
+        { "type": "sticky", "title": "别上当", "body": "光看 README 漂不漂亮没用。光鲜的 logo 和截图能掩盖一摊烂泥。永远先看日期。" },
+        { "type": "prose", "body": "搜索框里值得记住的几个小招：\n\n- `language:python` —— 只看 Python 项目\n- `stars:>1000` —— 只看热门的\n- `pushed:>2025-01-01` —— 只看今年还在更新的\n- 组合起来：`claude code language:typescript stars:>100`\n\nGitHub Trending（`github.com/trending`）展示的是当下最火的项目——按语言筛、按日 / 周 / 月切，是了解大家正在为什么兴奋的好地方。" },
+        { "type": "terminal", "lines": [
+          "# search via the gh CLI:",
+          "$ gh search repos \"claude code\" --language=typescript --stars=\">100\"",
+          "  anthropics/claude-code",
+          "  ...",
+          "$ gh repo view anthropics/claude-code --web   # opens in browser"
+        ] },
+        { "type": "prose", "body": "现在玩一下底下的 **Repo Detective**——五个真实的 repo，每个一张线索卡。先猜它是干嘛的，再看答案。" }
+      ]
+    },
+    {
+      "id": "m4",
+      "num": 4,
+      "emoji": "📖",
+      "title": "看懂 README",
+      "subtitle": "README 是一份合同。30 秒就能看完。",
+      "intro": "一份好的 `README.md` 会在第一屏里回答四个问题：**这是什么**、**怎么装**、**怎么用**、**我为什么要在乎**。把那几个标准章节认全，扫一眼陌生的 repo 也能心里有数。",
+      "asymmetric": "scribble",
+      "game": "spot-readme",
+      "sections": [
+        { "type": "prose", "body": "你会反复看到这七个段落，大致按这个顺序：\n\n1. **标题 + 一句话简介** —— 这是什么，一行字交代清楚。\n2. **Hero / demo** —— 动图、截图，或者一个可点的 demo 链接。\n3. **Features** —— 一串 bullet，列出能干啥。\n4. **Install** —— `npm install`、`pip install`、`brew install`。能直接复制的命令。\n5. **Usage** —— 一个最小例子，证明它真的跑得起来。\n6. **License** —— MIT、Apache、GPL，告诉你能干什么不能干什么。\n7. **Contributing** —— 外人怎么帮忙（多半就是：'open a PR'）。" },
+        { "type": "sticky", "title": "红色警报", "body": "没有 `Install` 段。如果他们都不告诉你怎么跑起来，这个项目八成只做了一半。" },
+        { "type": "prose", "body": "底下的拖放小游戏给你一份匿名化的真实 README。把每个标签拖到它对应的位置上。目标：第一次就 7/7。" },
+        { "type": "terminal", "lines": [
+          "$ cat README.md | head -20      # peek at top of any README",
+          "# claude-code",
+          "",
+          "> Coding agent that understands your codebase.",
+          "",
+          "## Install",
+          "  brew install anthropic/cli/claude",
+          "",
+          "## Usage",
+          "  claude   # interactive session in your terminal"
+        ] }
+      ]
+    },
+    {
+      "id": "m5",
+      "num": 5,
+      "emoji": "📥",
+      "title": "克隆与使用",
+      "subtitle": "把 repo 拉到自己电脑上跑起来。",
+      "intro": "**Cloning（克隆）** 就是把一个 repo 的副本（连同完整历史）下载到你电脑上。下载完之后，这个项目就可以读、可以跑、可以改、可以 fork——只要在它许可证允许的范围内。",
+      "asymmetric": "tape",
+      "sections": [
+        { "type": "prose", "body": "两种方式：\n\n**`git clone <url>`** —— 老路子。只要装了 `git` 就能用。\n\n**`gh repo clone <owner>/<repo>`** —— 新路子。结果一样，少打几个字，自动复用你 GitHub 的登录态。\n\n两种方式都会在当前目录新建一个跟 repo 同名的文件夹。`cd` 进去，按 README 走就行。" },
+        { "type": "diagram", "diagramId": "clone-flow" },
+        { "type": "embed", "id": "command-builder" },
+        { "type": "terminal", "lines": [
+          "$ gh repo clone anthropics/claude-code",
+          "  Cloning into 'claude-code'...",
+          "  remote: Counting objects: 4231, done.",
+          "  Receiving objects: 100% (4231/4231), 12.4 MiB | 8.1 MiB/s",
+          "$ cd claude-code",
+          "$ npm install         # or whatever the README says",
+          "$ npm run dev"
+        ] },
+        { "type": "sticky", "title": "License 速读", "body": "**MIT** —— 想干嘛干嘛，留着版权声明就行。最宽松。\n\n**Apache 2.0** —— 跟 MIT 类似，多一条专利授权。\n\n**GPL** —— 你要是再分发，自己的改动也得开源。\n\n**没写许可证** —— 保留全部权利。能看，但法律上你不能拿来重用。" },
+        { "type": "prose", "body": "克隆基本上是 *只读* 的。要把改动推回原 repo，你得是它的协作者，或者 **fork**（在 github.com 上做一份自己的副本）然后往那份推。Fork 是开源贡献几乎所有的起点。" }
+      ]
+    },
+    {
+      "id": "m6",
+      "num": 6,
+      "emoji": "🤝",
+      "title": "GitHub × Claude Code",
+      "subtitle": "你真正的工作流，画清楚了你才看得懂。",
+      "intro": "这是整套教程的拱顶石模块——其它模块的内容会因为这一模块而连成一片。当你让 Claude Code 'push 到 GitHub' 的时候，*实际上* 在发生什么？五个步骤、三个工具、一张你会记一辈子的图。",
+      "asymmetric": "doodle",
+      "game": "commit-translator",
+      "sections": [
+        { "type": "diagram", "diagramId": "cc-pipeline" },
+        { "type": "prose", "body": "五步流水线：\n\n**1）代码住在你的项目文件夹里**（`~/Desktop/Projects/my-app`）。Claude Code 在那里改文件。\n\n**2）`git` 看着这个文件夹。** `git status` 显示哪儿变了。`git add .` 等于说 '这些改动我要存下来'。\n\n**3）`git commit -m \"...\"` 存一个快照。** 一次 commit 就是时间线上一个带标签的书签。标签写得好不好很重要——这就是底下 Commit Translator 这个游戏要做的事。\n\n**4）`git push` 把新的 commits 通过网络发到 GitHub。**\n\n**5）`gh` 是 GitHub 的 CLI**——让你在终端里就能做网站上的事。建仓库、开 PR、看 issues，全程不用离开 Claude Code。" },
+        { "type": "sticky", "title": "三个工具", "body": "`git` = 本地存档点。\n`github.com` = 那个网站（云端）。\n`gh` = 让两边好好说话的桥。" },
+        { "type": "terminal", "lines": [
+          "$ brew install gh                    # install once",
+          "$ gh auth login                      # open browser, sign in",
+          "  ✓ Logged in as your-username",
+          "$ gh repo create my-app --public --source=. --push",
+          "$ gh pr create --title \"Add login\" --body \"Closes #12\"",
+          "$ gh repo view --web                 # open this repo in browser"
+        ] },
+        { "type": "prose", "body": "Claude Code 干活的时候，幕后跑的就是这些命令。如果出错（auth 过期、改动冲突、没设 remote），你会看到报错——而现在你知道这条错是从哪一步冒出来的。" },
+        { "type": "callout", "title": "什么才算 '好的 commit message'", "lean": "r", "body": "**动词开头。** `Add` `Fix` `Update` `Remove` `Refactor`。用祈使句，像在给代码下命令。\n\n**别超过 72 个字符。** 长得能讲清楚，短得能扫一眼。\n\n**点出对象。** `Fix login` ✓ —— `Fix bug` ✗。\n\n底下的 Commit Translator 会拿这套标准给你打分。" }
+      ]
+    },
+    {
+      "id": "m7",
+      "num": 7,
+      "emoji": "🌿",
+      "title": "分支与合并请求",
+      "subtitle": "并行干活又不踩到对方的脚。",
+      "intro": "一条 **branch（分支）** 就是一条平行时间线。你新开一条，在上面随便改，主项目继续往前走，互不干扰。改满意了，你开一个 **Pull Request（PR / 合并请求）**——一份正式的提议：'请把我的分支合进 main'。",
+      "asymmetric": "arrow",
+      "game": "local-vs-remote",
+      "sections": [
+        { "type": "diagram", "diagramId": "branch-tree" },
+        { "type": "prose", "body": "每次都是这个流程：\n\n1. `git checkout -b feature/login` —— 开一条分支，切过去。\n2. 改文件。`git commit` 你的改动（可以攒好多次 commit）。\n3. `git push -u origin feature/login` —— 把分支推到 GitHub。\n4. `gh pr create` —— 开一个 PR。\n5. 审查者留评论，你继续推 commit，PR 自动更新。\n6. 通过 → 'Squash and merge' → 分支折进 `main`。删掉分支。" },
+        { "type": "sticky", "title": "为啥要这么麻烦", "body": "分支让你能 *试试* 一些有风险的东西，又不会把 `main` 弄坏。成功了就合，不成功就把分支扔掉。零后患。" },
+        { "type": "terminal", "lines": [
+          "$ git checkout -b feature/login",
+          "  Switched to a new branch 'feature/login'",
+          "$ # ... edit files, git add, git commit ...",
+          "$ git push -u origin feature/login",
+          "$ gh pr create --fill   # uses your commit messages as the PR body",
+          "  https://github.com/you/my-app/pull/7"
+        ] },
+        { "type": "prose", "body": "**本地 vs 远端** 一开始最容易把人绕晕。本地 = 你的笔记本。远端 = GitHub。`git commit` 在你 `git push` 之前，只在本地生效。底下——把动作拖到正确的桶里，把这件事钉牢。" }
+      ]
+    },
+    {
+      "id": "m8",
+      "num": 8,
+      "emoji": "💬",
+      "title": "议题与协作",
+      "subtitle": "GitHub 怎么变成一个项目追踪器。",
+      "intro": "一条 **Issue** 就是围绕一个 bug、功能请求或者问题的一条讨论线。**Discussions** 像论坛。**Projects** 是 kanban 看板。这三样都贴在你的代码旁边，重点就在这里——上下文从不离场。",
+      "asymmetric": "tape",
+      "sections": [
+        { "type": "prose", "body": "写好一条 issue 的关键是 **模板**。哪怕是个随手写的：\n\n**标题** —— 动词开头，要具体。`Fix dark-mode contrast on settings page` 比 `Bug` 强一百倍。\n\n**复现步骤** —— 编号，不省略。读者应该能直接复制粘贴。\n\n**预期 vs 实际** —— 你以为会发生什么，实际上发生了什么。\n\n**环境** —— OS、浏览器、Claude Code 版本。省一轮来回。\n\n试试下面的转换器——粘一段含糊的吐槽，得到一份像样的 issue 草稿。" },
+        { "type": "embed", "id": "issue-builder" },
+        { "type": "sticky", "title": "标签很关键", "body": "`bug` `enhancement` `good first issue` `help wanted`。陌生人就是靠这些找到自己能帮上忙的 issue。多用，别省。" },
+        { "type": "terminal", "lines": [
+          "$ gh issue create --title \"Fix dark-mode contrast\" \\",
+          "    --body \"$(cat <<'EOF'\n## Steps\n1. Open settings page\n2. Toggle dark mode\n## Expected\nHigh-contrast text\n## Actual\nGray on dark gray, unreadable\nEOF\n)\"",
+          "  https://github.com/you/my-app/issues/12"
+        ] },
+        { "type": "prose", "body": "Issues、PRs、commits 之间可以互相引用：在一个 PR 描述里写 `Closes #12`，合并的时候那条 issue 就自动关掉。一个健康的 repo 就是这么保持井井有条的——一张随代码一起活着、不会过期的交叉引用网。" }
+      ]
+    },
+    {
+      "id": "m9",
+      "num": 9,
+      "emoji": "🚀",
+      "title": "Pages 与 Actions 简介",
+      "subtitle": "免费托管 + 每次 push 跑一下的小机器人。",
+      "intro": "**GitHub Pages** 把一个 repo 变成一个公开网站，地址是 `username.github.io/repo-name`。免费、快、不用自己管服务器。**GitHub Actions** 是一群小机器人，碰到事件就跑（'on push'、'on PR opened'）——它们能跑 lint、跑测试、部署网站、发通知。两样东西对个人项目都是免费的。",
+      "asymmetric": "scribble",
+      "sections": [
+        { "type": "prose", "body": "**GitHub Pages vs Cloudflare Pages** —— 都是免费静态托管，都是 push 就部署。\n\n- **GitHub Pages** 最省事，前提是你的项目本来就在 GitHub 上。限制：单站 1 GB，软上限 100 GB / 月带宽。\n- **Cloudflare Pages** 带宽不限、全球 CDN 更快、原生集成 Workers，还能给每条 PR 自动起预览。多花一点点工夫（去 `pages.cloudflare.com` 加一个项目），但凡是要公开分享的东西都值得这一步。\n\n这套教程里大多数项目都部署在 Cloudflare Pages 上——`wrangler pages deploy dist`。" },
+        { "type": "sticky", "title": "怎么选", "body": "GitHub Pages —— 内部工具、文档，啥都小的东西。\n\nCloudflare Pages —— 要公开分享，或者带宽吃紧的东西。" },
+        { "type": "prose", "body": "Actions 文件住在 `.github/workflows/<name>.yml`。最简单的一个，每次 push 都跑一下，告诉你 build 还没坏掉。下面是个小例子：" },
+        { "type": "terminal", "lines": [
+          "# .github/workflows/build.yml",
+          "name: build",
+          "on: [push]",
+          "jobs:",
+          "  build:",
+          "    runs-on: ubuntu-latest",
+          "    steps:",
+          "      - uses: actions/checkout@v4",
+          "      - uses: actions/setup-node@v4",
+          "        with: { node-version: 20 }",
+          "      - run: npm ci",
+          "      - run: npm run build"
+        ] },
+        { "type": "prose", "body": "别去背 YAML。记住骨架就行：**name → on → jobs → steps**。push 之后哪一步崩了，github.com 上对应那条 commit 旁边会冒出红色 ✗——点进去就有完整日志。9 成的 CI 问题靠这个就够调了。" }
+      ]
+    },
+    {
+      "id": "m10",
+      "num": 10,
+      "emoji": "🧪",
+      "title": "练习场",
+      "subtitle": "五个游戏、三十张卡片、可下载的 PDF。",
+      "intro": "你已经把十个模块都走完了。练习场是把学到的东西保温的地方。游戏想再玩几遍就再玩，咖啡时间随手翻翻闪卡，想要一份纸质版就把 briefing PDF 抓走。",
+      "asymmetric": "stain",
+      "sections": [
+        { "type": "embed", "id": "lab" }
+      ]
+    }
+  ]
+}

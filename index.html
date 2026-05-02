@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>GitMa 吉码 — GitHub Tutorial for Claude Coders</title>
+  <meta name="description" content="A bilingual sketchbook tutorial for understanding GitHub when you build with Claude Code. Repos, commits, branches, PRs, and the GitHub × Claude Code workflow.">
+  <meta property="og:title" content="GitMa 吉码 — GitHub Tutorial for Claude Coders">
+  <meta property="og:description" content="A bilingual sketchbook tutorial for understanding GitHub when you build with Claude Code.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gitma.pages.dev/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:site_name" content="GitMa 吉码">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GitMa 吉码">
+  <meta name="twitter:description" content="A bilingual sketchbook tutorial for understanding GitHub when you build with Claude Code.">
+  <meta name="theme-color" content="#faf6ec">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="canonical" href="https://gitma.pages.dev/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="styles.css" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- SVG sketch wobble filter, applied to diagrams via style="filter:url(#wobble)" -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="wobble">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/>
+        <feDisplacementMap in="SourceGraphic" scale="1.5"/>
+      </filter>
+      <filter id="wobble-strong">
+        <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" scale="2.4"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div id="app"></div>
+
+  <noscript>
+    <div style="color:#1f1b16;background:#faf6ec;padding:2rem;text-align:center;font-family:system-ui">
+      <h1 style="font-family:'Patrick Hand',cursive">GitMa 吉码</h1>
+      <p>This site needs JavaScript. 请启用 JavaScript。</p>
+    </div>
+  </noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "GitMa 吉码 — GitHub Tutorial for Claude Coders",
+    "description": "A bilingual sketchbook tutorial for understanding GitHub when you build with Claude Code.",
+    "url": "https://gitma.pages.dev/",
+    "inLanguage": ["en", "zh"],
+    "learningResourceType": "Tutorial",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
