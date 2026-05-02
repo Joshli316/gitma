@@ -1,0 +1,205 @@
+{
+  "title": "GitHub Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary function of GitHub regarding code folders?",
+      "back": "It hosts folders of code and maintains a complete history of every change ever made to them."
+    },
+    {
+      "front": "How does GitHub's 'time travel' feature benefit a developer?",
+      "back": "It allows a developer to rewind a file or the entire project to any specific point in its history."
+    },
+    {
+      "front": "Why is it safe for multiple people to edit the same GitHub project simultaneously?",
+      "back": "Collaborators work on their own copies and propose changes for the owner to review and merge."
+    },
+    {
+      "front": "In the '5Ws' of GitHub, what role does git play compared to GitHub?",
+      "back": "Git is the underlying engine that manages changes, while GitHub is the website that hosts them."
+    },
+    {
+      "front": "Concept: Repository (repo)",
+      "back": "Definition: A project folder tracked by git, containing a hidden history folder and the project files."
+    },
+    {
+      "front": "What is the purpose of the hidden .git/ subfolder within a repository?",
+      "back": "It functions as a 'time machine' that stores all the bookkeeping and version history for the folder."
+    },
+    {
+      "front": "Which file serves as the 'front door' of a repository and is the first thing people read on github.com?",
+      "back": "README.md"
+    },
+    {
+      "front": "The _____ file specifies which files or folders (like node_modules or .env) git should ignore.",
+      "back": ".gitignore"
+    },
+    {
+      "front": "What is the legal implication of a repository that contains no LICENSE file?",
+      "back": "It defaults to 'all rights reserved,' meaning others can read the code but cannot legally reuse it."
+    },
+    {
+      "front": "When searching for quality repositories, what does a count of 10k+ stars generally signify?",
+      "back": "The project is considered an 'industry standard.'"
+    },
+    {
+      "front": "Why is the 'Last commit date' a critical metric when evaluating a repository?",
+      "back": "It indicates whether a project is actively maintained or has been abandoned (e.g., no changes since 2019)."
+    },
+    {
+      "front": "What does a high number of closed Pull Requests (PRs) suggest about a project's maintainers?",
+      "back": "It shows that the maintainers are active and actually merge contributions into the project."
+    },
+    {
+      "front": "A good README should answer which four questions in the first screenful?",
+      "back": "What is this, how do I install it, how do I use it, and why should I care?"
+    },
+    {
+      "front": "What is a major 'red flag' when reading the README of a new project?",
+      "back": "The absence of an 'Install' section, suggesting the project might be half-built."
+    },
+    {
+      "front": "Process: Cloning",
+      "back": "Definition: Downloading a complete copy of a repository, including its full history, onto a local machine."
+    },
+    {
+      "front": "How does the command `gh repo clone` differ from the standard `git clone`?",
+      "back": "It is the modern GitHub CLI version that requires less typing and automatically uses GitHub authentication."
+    },
+    {
+      "front": "Which license is the most permissive, requiring only that the original copyright line be kept?",
+      "back": "MIT License"
+    },
+    {
+      "front": "How does the Apache 2.0 license differ from the MIT license?",
+      "back": "It includes the same permissions as MIT but adds an explicit patent grant."
+    },
+    {
+      "front": "The _____ license is a 'copyleft' license, requiring any redistributed changes to also be open-source.",
+      "back": "GPL"
+    },
+    {
+      "front": "What is the purpose of a 'fork' in the GitHub workflow?",
+      "back": "It creates your own copy of someone else's repository on GitHub so you can push changes and contribute."
+    },
+    {
+      "front": "In the Claude Code pipeline, what is the purpose of the command `git status`?",
+      "back": "It shows which files in the project folder have been changed but not yet saved in a snapshot."
+    },
+    {
+      "front": "What action does `git add .` perform in the development workflow?",
+      "back": "It stages all current changes, signaling that they should be included in the next commit."
+    },
+    {
+      "front": "Concept: git commit",
+      "back": "Definition: A labeled snapshot or bookmark of the project at a specific point in time."
+    },
+    {
+      "front": "Which command is used to send local commits from your computer to the cloud on GitHub?",
+      "back": "git push"
+    },
+    {
+      "front": "What is the primary role of the 'gh' tool in the GitHub ecosystem?",
+      "back": "It is the GitHub CLI that acts as a bridge, allowing website-related tasks to be performed from the terminal."
+    },
+    {
+      "front": "What part of speech should always begin a high-quality commit message?",
+      "back": "An imperative verb (e.g., Add, Fix, Update, Remove)."
+    },
+    {
+      "front": "Why is it recommended to keep commit messages under 72 characters?",
+      "back": "To ensure they are long enough to explain the change but short enough to be scanned quickly."
+    },
+    {
+      "front": "Concept: Branch",
+      "back": "Definition: A parallel timeline that allows for experimentation without affecting the main project code."
+    },
+    {
+      "front": "What is the definition of a Pull Request (PR)?",
+      "back": "A formal proposal to merge the changes from one branch into the main branch."
+    },
+    {
+      "front": "In the branch workflow, what should you do after a reviewer approves your Pull Request?",
+      "back": "Perform a 'Squash and merge' and then delete the temporary branch."
+    },
+    {
+      "front": "What is the difference between 'local' and 'remote' in the context of git?",
+      "back": "Local refers to the repository on your laptop; remote refers to the linked copy on a server like GitHub."
+    },
+    {
+      "front": "When does a 'git commit' become visible to collaborators on GitHub?",
+      "back": "Only after you execute a 'git push' to the remote repository."
+    },
+    {
+      "front": "Which GitHub feature provides a thread for discussing specific bugs, features, or questions?",
+      "back": "Issues"
+    },
+    {
+      "front": "GitHub _____ function as kanban boards to organize work items right next to the code.",
+      "back": "Projects"
+    },
+    {
+      "front": "What are the four components of a well-documented GitHub Issue?",
+      "back": "A specific title, steps to reproduce, expected vs. actual results, and environment information."
+    },
+    {
+      "front": "How can you automatically close a specific issue when a Pull Request is merged?",
+      "back": "By writing 'Closes #number' (e.g., Closes #12) in the PR description."
+    },
+    {
+      "front": "What service does GitHub Pages provide to a repository?",
+      "back": "It turns the repository into a public website hosted at username.github.io/repo-name."
+    },
+    {
+      "front": "Concept: GitHub Actions",
+      "back": "Definition: Automation scripts ('robots') that run on specific events like a push or a PR opening."
+    },
+    {
+      "front": "Where are GitHub Actions workflow files stored within a repository?",
+      "back": ".github/workflows/"
+    },
+    {
+      "front": "Compared to GitHub Pages, what unique benefit does Cloudflare Pages offer for PRs?",
+      "back": "It provides unique preview deployments for every Pull Request."
+    },
+    {
+      "front": "What are the four primary structural levels of a GitHub Actions YAML file?",
+      "back": "name, on, jobs, and steps."
+    },
+    {
+      "front": "In git terminology, what does 'origin' usually refer to?",
+      "back": "The default name for your main remote repository, which is typically GitHub."
+    },
+    {
+      "front": "What does the 'HEAD' pointer represent in git?",
+      "back": "The pointer to the specific commit you are currently working on."
+    },
+    {
+      "front": "The act of marking files to be included in the next commit is known as _____.",
+      "back": "staging (or git add)"
+    },
+    {
+      "front": "What is a 'merge conflict'?",
+      "back": "A situation where git cannot automatically combine two branches and requires the user to choose which changes to keep."
+    },
+    {
+      "front": "Term: Squash",
+      "back": "Definition: The process of collapsing multiple individual commits into a single commit before merging."
+    },
+    {
+      "front": "What is the purpose of a 'tag' or 'release' in a project's history?",
+      "back": "To mark a specific, named point in time as a version, such as v1.0.0."
+    },
+    {
+      "front": "What is the definition of a 'diff' in the context of code review?",
+      "back": "The line-by-line difference between two different versions of a file."
+    },
+    {
+      "front": "What does the command `git checkout -b feature/login` do?",
+      "back": "It creates a new branch named 'feature/login' and immediately switches you to it."
+    },
+    {
+      "front": "Why use 'Discussions' instead of 'Issues' for a general question about a project?",
+      "back": "Discussions function as a community forum, whereas Issues are better suited for specific bugs or feature tasks."
+    }
+  ]
+}

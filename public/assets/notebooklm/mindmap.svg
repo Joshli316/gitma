@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" style="background:#faf6ec">
+  <defs>
+    <filter id="wobble" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="3"/>
+      <feDisplacementMap in="SourceGraphic" scale="2"/>
+    </filter>
+    <pattern id="paper" patternUnits="userSpaceOnUse" width="22" height="22">
+      <rect width="22" height="22" fill="#faf6ec"/>
+      <circle cx="3" cy="3" r="1" fill="#2b262022" />
+    </pattern>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#paper)"/>
+  <text x="40" y="60" font-family="'Patrick Hand',cursive" font-size="38" fill="#1f1b16">GitHub for Claude Coders — mind map</text>
+  <text x="40" y="92" font-family="'Patrick Hand',cursive" font-size="22" fill="#3a342c">GitMa 吉码 · NotebookLM</text>
+  <path d="M800 550 Q 801.0715686159468 441.37936516961366 800 270"
+    stroke="#e26d5c" stroke-width="3" fill="none" stroke-linecap="round" style="filter:url(#wobble)"/>
+<ellipse cx="800" cy="270" rx="115" ry="38" fill="#f3ecd8" stroke="#e26d5c" stroke-width="3" style="filter:url(#wobble)"/>
+<text x="800" y="276" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" fill="#1f1b16">Core Concepts (5Ws)</text>
+<path d="M777.079874311915 251.10626064114354 Q 735.9601133626766 206.27853207091616 682.1250678898487 133.9650766162335"
+        stroke="#e26d5c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="572.1250678898487" y="115.96507661623349" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 682.1250678898487 133.9650766162335)" style="filter:url(#wobble);opacity:.9"/>
+<text x="682.1250678898487" y="138.9650766162335" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 682.1250678898487 133.9650766162335)">Definition: Folders + History</text>
+<path d="M791.74843725717 245.70471079191145 Q 778.053475289372 185.14306481404714 757.5633916083032 95.0739177017625"
+        stroke="#e26d5c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="647.5633916083032" y="77.0739177017625" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 757.5633916083032 95.0739177017625)" style="filter:url(#wobble);opacity:.9"/>
+<text x="757.5633916083032" y="100.0739177017625" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 757.5633916083032 95.0739177017625)">Time Travel: Versioned snapshots</text>
+<path d="M808.25156274283 245.70471079191145 Q 817.4034839284706 188.68488496384666 842.436608391697 95.0739177017625"
+        stroke="#e26d5c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="732.436608391697" y="77.0739177017625" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 842.436608391697 95.0739177017625)" style="filter:url(#wobble);opacity:.9"/>
+<text x="842.436608391697" y="100.0739177017625" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 842.436608391697 95.0739177017625)">Collaboration: Proposal-based merging</text>
+<path d="M822.920125688085 251.10626064114354 Q 855.3895769128777 203.98791876759282 917.8749321101513 133.96507661623352"
+        stroke="#e26d5c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="807.8749321101513" y="115.96507661623352" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 917.8749321101513 133.96507661623352)" style="filter:url(#wobble);opacity:.9"/>
+<text x="917.8749321101513" y="138.96507661623352" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 917.8749321101513 133.96507661623352)">Where: github.com and local machine</text>
+<path d="M800 550 Q 875.5130504183049 483.45553561970394 1018.9128150910483 375.42285547955464"
+    stroke="#e3a72f" stroke-width="3" fill="none" stroke-linecap="round" style="filter:url(#wobble)"/>
+<ellipse cx="1018.9128150910483" cy="375.42285547955464" rx="115" ry="38" fill="#f3ecd8" stroke="#e3a72f" stroke-width="3" style="filter:url(#wobble)"/>
+<text x="1018.9128150910483" y="381.42285547955464" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" fill="#1f1b16">Anatomy of a Repository</text>
+<path d="M1025.3027588204259 350.84303320956707 Q 1038.4114901928547 283.44230550545177 1051.7753828421335 198.4481351356441"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="941.7753828421335" y="180.4481351356441" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 1051.7753828421335 198.4481351356441)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1051.7753828421335" y="203.4481351356441" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 1051.7753828421335 198.4481351356441)">README.md: Project front door</text>
+<path d="M1040.3608006414654 355.6668964737424 Q 1068.9051427063566 298.16016089238536 1129.2167407789082 233.1799506377064"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="1019.2167407789082" y="215.1799506377064" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 1129.2167407789082 233.1799506377064)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1129.2167407789082" y="238.1799506377064" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 1129.2167407789082 233.1799506377064)">LICENSE: Usage permissions</text>
+<path d="M1050.6503310805695 364.8830843764634 Q 1104.5681699543425 341.10457848542006 1182.1343258942998 299.5365035372976"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="1072.1343258942998" y="281.5365035372976" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 1182.1343258942998 299.5365035372976)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1182.1343258942998" y="304.5365035372976" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 1182.1343258942998 299.5365035372976)">.gitignore: Files to ignore</text>
+<path d="M1053.8836880681088 376.44257013109427 Q 1113.570527597595 372.80395595232676 1198.7630189730733 382.76480097064"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="1088.7630189730733" y="364.76480097064" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 1198.7630189730733 382.76480097064)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1198.7630189730733" y="387.76480097064" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 1198.7630189730733 382.76480097064)">.git/: Hidden time-machine folder</text>
+<path d="M800 550 Q 885.5119173917061 574.2831000064386 1072.9798154109105 612.305861507768"
+    stroke="#2a9d8f" stroke-width="3" fill="none" stroke-linecap="round" style="filter:url(#wobble)"/>
+<ellipse cx="1072.9798154109105" cy="612.305861507768" rx="115" ry="38" fill="#f3ecd8" stroke="#2a9d8f" stroke-width="3" style="filter:url(#wobble)"/>
+<text x="1072.9798154109105" y="618.305861507768" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" fill="#1f1b16">Evaluating Repositories</text>
+<path d="M1103.8680705984318 600.5490638329495 Q 1156.687810130404 577.0188619354027 1231.8336992324485 527.6569182490754"
+        stroke="#2a9d8f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="1121.8336992324485" y="509.6569182490754" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 1231.8336992324485 527.6569182490754)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1231.8336992324485" y="532.6569182490754" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 1231.8336992324485 527.6569182490754)">Stars: Popularity signal</text>
+<path d="M1107.1022923372743 617.8688848566759 Q 1156.8426628904874 625.9302283191034 1248.4668396036388 652.3596296199046"
+        stroke="#2a9d8f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="1138.4668396036388" y="634.3596296199046" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 1248.4668396036388 652.3596296199046)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1248.4668396036388" y="657.3596296199046" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 1248.4668396036388 652.3596296199046)">Last commit: Activity status</text>
+<path d="M1093.6676550494142 632.4711642387063 Q 1126.6982484749888 691.2689723468055 1179.3744192660724 757.4960411705234"
+        stroke="#2a9d8f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="1069.3744192660724" y="739.4960411705234" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 1179.3744192660724 757.4960411705234)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1179.3744192660724" y="762.4960411705234" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 1179.3744192660724 757.4960411705234)">Issues/PRs: Community engagement</text>
+<path d="M800 550 Q 854.6505243788478 632.808371112663 921.4874469529163 802.2712830126774"
+    stroke="#8a7fbf" stroke-width="3" fill="none" stroke-linecap="round" style="filter:url(#wobble)"/>
+<ellipse cx="921.4874469529163" cy="802.2712830126774" rx="115" ry="38" fill="#f3ecd8" stroke="#8a7fbf" stroke-width="3" style="filter:url(#wobble)"/>
+<text x="921.4874469529163" y="808.2712830126774" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" fill="#1f1b16">License Types</text>
+<path d="M953.614527436798 812.1906183771334 Q 998.3690402016969 835.986217325265 1086.712432298593 873.690497636761"
+        stroke="#8a7fbf" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="984.7124322985931" y="855.690497636761" width="204" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 1086.712432298593 873.690497636761)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1086.712432298593" y="878.690497636761" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 1086.712432298593 873.690497636761)">MIT: Most permissive</text>
+<path d="M943.6797113901167 821.6032830141206 Q 979.6435516675224 877.0723558384085 1035.6190926299469 941.4616830230689"
+        stroke="#8a7fbf" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="925.6190926299469" y="923.4616830230689" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 1035.6190926299469 941.4616830230689)" style="filter:url(#wobble);opacity:.9"/>
+<text x="1035.6190926299469" y="946.4616830230689" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 1035.6190926299469 941.4616830230689)">Apache 2.0: Includes patent grant</text>
+<path d="M928.8109091044502 826.7178814375809 Q 935.9091821807983 897.0343526255181 959.1509665893759 978.2867916719828"
+        stroke="#8a7fbf" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="849.1509665893759" y="960.2867916719828" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 959.1509665893759 978.2867916719828)" style="filter:url(#wobble);opacity:.9"/>
+<text x="959.1509665893759" y="983.2867916719828" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 959.1509665893759 978.2867916719828)">GPL: Copyleft requirement</text>
+<path d="M912.3138880500478 826.3972895694059 Q 895.4404346077345 887.7979369885426 874.3091440238779 975.9785302211226"
+        stroke="#8a7fbf" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="764.3091440238779" y="957.9785302211226" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 874.3091440238779 975.9785302211226)" style="filter:url(#wobble);opacity:.9"/>
+<text x="874.3091440238779" y="980.9785302211226" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 874.3091440238779 975.9785302211226)">No License: All rights reserved</text>
+<path d="M800 550 Q 769.0881460276346 631.2261374942552 678.5125530470838 802.2712830126774"
+    stroke="#d97a6c" stroke-width="3" fill="none" stroke-linecap="round" style="filter:url(#wobble)"/>
+<ellipse cx="678.5125530470838" cy="802.2712830126774" rx="115" ry="38" fill="#f3ecd8" stroke="#d97a6c" stroke-width="3" style="filter:url(#wobble)"/>
+<text x="678.5125530470838" y="808.2712830126774" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" fill="#1f1b16">Claude Code Pipeline</text>
+<path d="M687.6861119499523 826.3972895694059 Q 699.4821761330843 886.1039903393668 725.6908559761222 975.9785302211226"
+        stroke="#d97a6c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="615.6908559761222" y="957.9785302211226" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 725.6908559761222 975.9785302211226)" style="filter:url(#wobble);opacity:.9"/>
+<text x="725.6908559761222" y="980.9785302211226" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 725.6908559761222 975.9785302211226)">Edit: Local file changes</text>
+<path d="M675.3040714147062 827.166016961343 Q 664.8163955454737 894.6108509135211 662.0117903662847 981.5133674430699"
+        stroke="#d97a6c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="552.0117903662847" y="963.5133674430699" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 662.0117903662847 981.5133674430699)" style="filter:url(#wobble);opacity:.9"/>
+<text x="662.0117903662847" y="986.5133674430699" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 662.0117903662847 981.5133674430699)">git add: Stage changes</text>
+<path d="M663.3266221779693 824.7955047102379 Q 636.497247504032 886.5509666958422 600.4134800059234 964.4456792351128"
+        stroke="#d97a6c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="490.41348000592336" y="946.4456792351128" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 600.4134800059234 964.4456792351128)" style="filter:url(#wobble);opacity:.9"/>
+<text x="600.4134800059234" y="969.4456792351128" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 600.4134800059234 964.4456792351128)">git commit: Save snapshot</text>
+<path d="M653.2641271760968 819.5846757147376 Q 616.6545279738589 863.5349073066457 548.6635057105797 926.9277104675115"
+        stroke="#d97a6c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="438.66350571057967" y="908.9277104675115" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 548.6635057105797 926.9277104675115)" style="filter:url(#wobble);opacity:.9"/>
+<text x="548.6635057105797" y="931.9277104675115" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 548.6635057105797 926.9277104675115)">git push: Send to cloud</text>
+<path d="M646.3854725632021 812.1906183771334 Q 602.3869778979526 841.7259769407108 513.287567701407 873.690497636761"
+        stroke="#d97a6c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="403.28756770140706" y="855.690497636761" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 513.287567701407 873.690497636761)" style="filter:url(#wobble);opacity:.9"/>
+<text x="513.287567701407" y="878.690497636761" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 513.287567701407 873.690497636761)">gh CLI: Bridge terminal and web</text>
+<path d="M800 550 Q 706.267873039252 562.9897754417178 527.0201845890895 612.3058615077681"
+    stroke="#5fb3a8" stroke-width="3" fill="none" stroke-linecap="round" style="filter:url(#wobble)"/>
+<ellipse cx="527.0201845890895" cy="612.3058615077681" rx="115" ry="38" fill="#f3ecd8" stroke="#5fb3a8" stroke-width="3" style="filter:url(#wobble)"/>
+<text x="527.0201845890895" y="618.3058615077681" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" fill="#1f1b16">Collaboration Workflow</text>
+<path d="M506.3323449505858 632.4711642387064 Q 470.27861135763624 682.1198799276343 420.6255807339277 757.4960411705235"
+        stroke="#5fb3a8" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="310.6255807339277" y="739.4960411705235" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 420.6255807339277 757.4960411705235)" style="filter:url(#wobble);opacity:.9"/>
+<text x="420.6255807339277" y="762.4960411705235" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 420.6255807339277 757.4960411705235)">Branching: Parallel timelines</text>
+<path d="M495.6957122203296 623.4582711224512 Q 439.7661209549989 651.7093347371963 365.9228981211817 692.6032107334858"
+        stroke="#5fb3a8" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="255.92289812118167" y="674.6032107334858" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 365.9228981211817 692.6032107334858)" style="filter:url(#wobble);opacity:.9"/>
+<text x="365.9228981211817" y="697.6032107334858" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 365.9228981211817 692.6032107334858)">Pull Request (PR): Merge proposal</text>
+<path d="M492.0234213240623 611.9658727837303 Q 443.6567245356342 612.0363072971485 347.0368306546642 609.8579426946964"
+        stroke="#5fb3a8" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="237.0368306546642" y="591.8579426946964" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 347.0368306546642 609.8579426946964)" style="filter:url(#wobble);opacity:.9"/>
+<text x="347.0368306546642" y="614.8579426946964" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 347.0368306546642 609.8579426946964)">Fork: Personal copy for contribution</text>
+<path d="M496.13192940156824 600.5490638329496 Q 453.0689736964023 569.513131988471 368.16630076755166 527.6569182490755"
+        stroke="#5fb3a8" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="258.16630076755166" y="509.6569182490755" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 368.16630076755166 527.6569182490755)" style="filter:url(#wobble);opacity:.9"/>
+<text x="368.16630076755166" y="532.6569182490755" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 368.16630076755166 527.6569182490755)">Cloning: Download local copy</text>
+<path d="M800 550 Q 712.04034844761 486.900499021807 581.0871849089516 375.42285547955464"
+    stroke="#e3a72f" stroke-width="3" fill="none" stroke-linecap="round" style="filter:url(#wobble)"/>
+<ellipse cx="581.0871849089516" cy="375.42285547955464" rx="115" ry="38" fill="#f3ecd8" stroke="#e3a72f" stroke-width="3" style="filter:url(#wobble)"/>
+<text x="581.0871849089516" y="381.42285547955464" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" fill="#1f1b16">Project Tools</text>
+<path d="M546.1163119318912 376.44257013109427 Q 489.7395487370531 380.14263017465015 401.2369810269267 382.76480097064007"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="291.2369810269267" y="364.76480097064007" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 401.2369810269267 382.76480097064007)" style="filter:url(#wobble);opacity:.9"/>
+<text x="401.2369810269267" y="387.76480097064007" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 401.2369810269267 382.76480097064007)">Issues: Bug and feature threads</text>
+<path d="M547.8223398483176 367.64894295989814 Q 491.98366428026 347.3659724197629 410.0108388828338 319.45068533802794"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="300.0108388828338" y="301.45068533802794" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 410.0108388828338 319.45068533802794)" style="filter:url(#wobble);opacity:.9"/>
+<text x="410.0108388828338" y="324.45068533802794" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 410.0108388828338 319.45068533802794)">Discussions: Community forums</text>
+<path d="M553.7230830225706 359.8356104330863 Q 503.37027039253 316.8548956820015 440.35751806470626 263.19469114498264"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="330.35751806470626" y="245.19469114498264" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 440.35751806470626 263.19469114498264)" style="filter:url(#wobble);opacity:.9"/>
+<text x="440.35751806470626" y="268.19469114498264" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 440.35751806470626 263.19469114498264)">Projects: Kanban boards</text>
+<path d="M563.0744544949653 353.98783807962633 Q 539.0737837686235 302.1362726614974 488.4502856370218 221.09073020007065"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="378.4502856370218" y="203.09073020007065" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(1.5 488.4502856370218 221.09073020007065)" style="filter:url(#wobble);opacity:.9"/>
+<text x="488.4502856370218" y="226.09073020007065" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(1.5 488.4502856370218 221.09073020007065)">Pages: Free static hosting</text>
+<path d="M574.6972411795739 350.84303320956707 Q 560.1905562839529 282.1138738785623 548.2246171578664 198.44813513564412"
+        stroke="#e3a72f" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="3,4" style="filter:url(#wobble)"/>
+<rect x="438.2246171578664" y="180.44813513564412" width="220" height="36" rx="8" fill="#fff27a" stroke="#1f1b16" stroke-width="1.5" transform="rotate(-1.5 548.2246171578664 198.44813513564412)" style="filter:url(#wobble);opacity:.9"/>
+<text x="548.2246171578664" y="203.44813513564412" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#1f1b16" transform="rotate(-1.5 548.2246171578664 198.44813513564412)">Actions: Automation robots</text>
+<circle cx="800" cy="550" r="78" fill="#e26d5c" stroke="#1f1b16" stroke-width="3.5" style="filter:url(#wobble)"/>
+<text x="800" y="545" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#fff" font-weight="bold">GitMa</text>
+<text x="800" y="572" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="20" fill="#fff">吉码</text>
+
+</svg>
