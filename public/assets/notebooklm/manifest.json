@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "generated": "2026-05-01",
-  "available": ["mindmap", "audio", "briefing", "studyguide", "flashcards"]
+  "generated": "2026-05-02",
+  "available": ["video", "mindmap", "audio", "briefing", "studyguide", "flashcards"]
 }
