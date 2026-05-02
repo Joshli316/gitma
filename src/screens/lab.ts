@@ -87,12 +87,16 @@ function wireFlashcards() {
         <button class="btn" data-mastery="learning" ${state === "learning" ? "style='background:var(--paper-3)'" : ""}>${t("lab.flashcards.learning")}</button>
         <button class="btn btn--accent" data-mastery="known" ${state === "known" ? "style='outline:2px solid var(--rule)'" : ""}>${t("lab.flashcards.known")}</button>
         <span style="flex:1"></span>
+        <button class="btn" id="fc-prev" ${i === 0 ? "disabled" : ""}>${t("lab.flashcards.prev")}</button>
         <button class="btn btn--primary" id="fc-next">${t("lab.flashcards.next")}</button>
       </div>
       <p style="text-align:center;margin:.5rem 0 0;color:var(--ink-soft)">${i + 1} / ${cards.length}</p>
     `;
     document.getElementById("fc-card")!.addEventListener("click", () => { flipped = !flipped; paint(); });
     document.getElementById("fc-next")!.addEventListener("click", () => { i++; flipped = false; paint(); });
+    document.getElementById("fc-prev")!.addEventListener("click", () => {
+      if (i > 0) { i--; flipped = false; paint(); }
+    });
     root!.querySelectorAll<HTMLButtonElement>("[data-mastery]").forEach((b) => {
       b.addEventListener("click", (e) => {
         e.stopPropagation();

@@ -3,6 +3,7 @@ import { t } from "../i18n";
 import { loadState, markModuleComplete } from "../state";
 import { escapeHtml, paragraphs, rich } from "../utils";
 import { stickyNote } from "../components/sticky-note";
+import { progressBar } from "../components/progress-bar";
 import { terminalBlock } from "../components/terminal-block";
 import { renderNbSlot, renderPdfSlots } from "../components/notebooklm-slots";
 import type { ModuleContent, ModuleSection } from "../types";
@@ -48,6 +49,8 @@ export async function renderModule(id: string): Promise<{ html: string; wire: ()
   const html = `
     <main id="main" class="shell" style="position:relative">
       <a href="#/" class="btn btn--ghost" style="margin:1.5rem 0 .5rem">${t("mod.back-home")}</a>
+
+      ${progressBar()}
 
       <header style="margin:.5rem 0 1.5rem;position:relative">
         <span class="chip chip--coral">${t("home.module")} ${m.num} / 10</span>
@@ -186,6 +189,8 @@ function hookCompleteButton(modId: string, nextId?: string): void {
     btn.dataset.done = "true";
     btn.classList.remove("btn--primary");
     btn.textContent = t("mod.completed");
+    const mount = document.getElementById("progress-bar-mount");
+    if (mount) mount.outerHTML = progressBar();
     if (nextId) {
       setTimeout(() => { window.location.hash = `#/m/${nextId}`; }, 350);
     }

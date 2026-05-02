@@ -53,8 +53,14 @@ function renderHydrated(kind: NbSlot, path: string): string {
       <audio controls preload="metadata" src="${path}" style="width:100%;margin-top:.5rem"></audio>`;
   }
   if (kind === "mindmap") {
+    const alt = escapeHtml(t("nb.mindmap.title"));
+    const zoomLabel = escapeHtml(t("nb.mindmap.zoom"));
     return `<strong>${t("nb.mindmap.title")}</strong>
-      <object data="${path}" type="image/svg+xml" style="width:100%;margin-top:.5rem;background:#fff;border-radius:6px"></object>`;
+      <button type="button" class="nb-mindmap-zoom" data-nb-zoom="${path}" aria-label="${zoomLabel}"
+        style="display:block;width:100%;margin-top:.5rem;padding:0;border:0;background:transparent;cursor:zoom-in;border-radius:6px">
+        <img src="${path}" alt="${alt}" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;border-radius:6px;pointer-events:none" />
+      </button>
+      <small style="display:block;margin-top:.25rem;text-align:center;opacity:.7">${zoomLabel}</small>`;
   }
   if (kind === "video") {
     // expects { ytId: "..." }
@@ -83,6 +89,40 @@ export async function hydrateVideoLoaders(root: ParentNode = document): Promise<
     } catch {
       // leave loader text
     }
+  }
+}
+
+function ensureZoomDialog(): HTMLDialogElement {
+  let dlg = document.getElementById("nb-zoom-dialog") as HTMLDialogElement | null;
+  if (dlg) return dlg;
+  dlg = document.createElement("dialog");
+  dlg.id = "nb-zoom-dialog";
+  dlg.setAttribute("aria-label", t("nb.mindmap.title"));
+  dlg.style.cssText =
+    "padding:0;border:0;background:transparent;max-width:96vw;max-height:96vh;width:96vw;height:96vh;overflow:hidden";
+  dlg.innerHTML = `
+    <button type="button" data-nb-zoom-close
+      aria-label="${escapeHtml(t("nb.zoom.close"))}"
+      style="position:absolute;top:1rem;right:1rem;z-index:2;width:2.5rem;height:2.5rem;border-radius:50%;border:0;background:#fff;cursor:pointer;font-size:1.25rem;box-shadow:0 2px 8px rgba(0,0,0,.3)">×</button>
+    <img data-nb-zoom-img alt="" style="display:block;width:100%;height:100%;object-fit:contain;background:#fff;border-radius:8px" />
+  `;
+  dlg.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (target === dlg || target.hasAttribute("data-nb-zoom-close")) dlg!.close();
+  });
+  document.body.appendChild(dlg);
+  return dlg;
+}
+
+export function attachZoomHandlers(root: ParentNode = document): void {
+  for (const btn of Array.from(root.querySelectorAll<HTMLButtonElement>("[data-nb-zoom]"))) {
+    btn.addEventListener("click", () => {
+      const path = btn.getAttribute("data-nb-zoom");
+      if (!path) return;
+      const dlg = ensureZoomDialog();
+      dlg.querySelector<HTMLImageElement>("[data-nb-zoom-img]")!.src = path;
+      dlg.showModal();
+    });
   }
 }
 

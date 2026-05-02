@@ -3,7 +3,7 @@ import { initI18n, t, toggleLang } from "./i18n";
 import { initTheme, toggleTheme } from "./theme";
 import { renderHeader, renderFooter } from "./components/header";
 import { clearContentCache } from "./content";
-import { hydrateNbSlots, hydrateVideoLoaders } from "./components/notebooklm-slots";
+import { hydrateNbSlots, hydrateVideoLoaders, attachZoomHandlers } from "./components/notebooklm-slots";
 
 const app = document.getElementById("app")!;
 
@@ -66,6 +66,7 @@ route("/", async () => {
     render(await renderHome());
     await hydrateNbSlots(app);
     await hydrateVideoLoaders(app);
+    attachZoomHandlers(app);
   } catch (e) {
     console.error(e);
     showError(t("err.load"));
@@ -77,9 +78,11 @@ route("/lab", async () => {
   try {
     setTitle(t("lab.title"));
     const { renderLab, wireLab } = await import("./screens/lab");
+    const { progressBar } = await import("./components/progress-bar");
     render(`
       <main id="main" class="shell">
         <a href="#/" class="btn btn--ghost" style="margin:1.5rem 0 .5rem">${t("mod.back-home")}</a>
+        ${progressBar()}
         <header style="margin:.5rem 0 1.5rem;position:relative">
           <span class="chip chip--mustard">${t("lab.title")}</span>
           <h1 style="margin:.5rem 0 .25rem"><span class="scribble-under">${t("lab.title")}</span></h1>
@@ -105,6 +108,7 @@ route("/m/:id", async (params) => {
     if (typeof wire === "function") await wire();
     await hydrateNbSlots(app);
     await hydrateVideoLoaders(app);
+    attachZoomHandlers(app);
   } catch (e) {
     console.error(e);
     showError(t("err.load"));

@@ -220,6 +220,7 @@ a:hover { text-decoration-color: var(--coral); }
 }
 .btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--rule); }
 .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--rule); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: 2px 2px 0 var(--rule); }
 
 .btn--primary { background: var(--coral); color: #fff; }
 .btn--accent  { background: var(--mustard); }

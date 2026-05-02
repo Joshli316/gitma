@@ -5,7 +5,7 @@ export function progressBar(): string {
   const pct = progressPct();
   const done = Object.values(loadState().modulesComplete).filter(Boolean).length;
   return `
-    <div role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"
+    <div id="progress-bar-mount" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"
          aria-label="${t("home.progress")}: ${pct}%"
          style="margin:.5rem 0 1.5rem">
       <div style="display:flex;justify-content:space-between;font-family:'Patrick Hand',cursive;font-size:1.1rem">
