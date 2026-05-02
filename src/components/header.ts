@@ -14,8 +14,8 @@ export function renderHeader(): string {
         <span>GitMa</span><span class="zh">吉码</span>
       </a>
       <div class="controls">
-        <button class="btn btn--ghost" onclick="window.__toggleTheme()" aria-label="${themeAria}" title="${themeAria}">${themeBtn}</button>
-        <button class="btn btn--ghost" onclick="window.__toggleLang()" aria-label="${langAria}" title="${langAria}" lang="${getLang() === "en" ? "zh" : "en"}">${langBtn}</button>
+        <button class="btn btn--ghost" data-action="toggle-theme" aria-label="${themeAria}" title="${themeAria}">${themeBtn}</button>
+        <button class="btn btn--ghost" data-action="toggle-lang" aria-label="${langAria}" title="${langAria}" lang="${getLang() === "en" ? "zh" : "en"}">${langBtn}</button>
       </div>
     </header>
   `;

@@ -41,21 +41,24 @@ function showError(msg: string): void {
   `);
 }
 
-// expose toggles for inline onclick (so header can be string-rendered)
-(window as any).__toggleLang = () => {
-  toggleLang();
-  clearContentCache();
-  // re-render current route
-  window.dispatchEvent(new HashChangeEvent("hashchange"));
-};
-(window as any).__toggleTheme = () => {
-  toggleTheme();
-  window.dispatchEvent(new HashChangeEvent("hashchange"));
-};
-
 // init once
 initI18n();
 initTheme();
+
+// Delegated click handler for header toggles (CSP blocks inline onclick=).
+document.body.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-action]");
+  if (!btn) return;
+  const action = btn.dataset.action;
+  if (action === "toggle-theme") {
+    toggleTheme();
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  } else if (action === "toggle-lang") {
+    toggleLang();
+    clearContentCache();
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  }
+});
 
 // routes
 route("/", async () => {
