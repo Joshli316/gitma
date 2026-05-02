@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://gitma.pages.dev/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gitma.pages.dev/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gitma.pages.dev/"/>
+  </url>
+  <url><loc>https://gitma.pages.dev/#/m/m1</loc><priority>0.9</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m2</loc><priority>0.8</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m3</loc><priority>0.8</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m4</loc><priority>0.8</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m5</loc><priority>0.8</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m6</loc><priority>0.9</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m7</loc><priority>0.8</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m8</loc><priority>0.7</priority></url>
+  <url><loc>https://gitma.pages.dev/#/m/m9</loc><priority>0.7</priority></url>
+  <url><loc>https://gitma.pages.dev/#/lab</loc><priority>0.9</priority></url>
+</urlset>
