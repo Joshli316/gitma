@@ -116,6 +116,9 @@ const ui: Record<string, Record<Lang, string>> = {
   "lab.flashcards.empty": { en: "All caught up — well done.", zh: "全部学完，太棒了。" },
   "lab.games.title": { en: "Games", zh: "游戏" },
   "lab.pdfs.title": { en: "Downloads", zh: "下载" },
+  "lab.repos.title": { en: "Top 10 GitHub repos for Claude Code", zh: "Claude Code 必看的 10 个 GitHub 仓库" },
+  "lab.repos.lead":  { en: "Star counts as of May 2026. Each card opens GitHub in a new tab.", zh: "数据截至 2026 年 5 月，点击在新标签页打开 GitHub。" },
+  "lab.repos.stars": { en: "stars", zh: "stars" },
   "lab.best": { en: "Best", zh: "最佳" },
   "lab.plays": { en: "plays", zh: "次" },
 

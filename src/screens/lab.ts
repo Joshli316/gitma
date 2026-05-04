@@ -3,6 +3,7 @@ import { loadState, setFlashcardMastery } from "../state";
 import { escapeHtml, shuffle } from "../utils";
 import { renderPdfSlots, hydratePdfSlots } from "../components/notebooklm-slots";
 import glossary from "../content/glossary.json";
+import { TOP_REPOS, formatStars } from "../content/repos";
 
 const GAMES = [
   { id: "lightning-quiz",   url: "#/m/m1",  key: "quiz.start" },
@@ -40,6 +41,30 @@ export function renderLab(): string {
       <div>
         ${renderPdfSlots()}
       </div>
+
+      <h2 style="margin:2rem 0 .25rem">${t("lab.repos.title")}</h2>
+      <p style="margin:0 0 .9rem;color:var(--ink-soft);font-size:.95rem">${t("lab.repos.lead")}</p>
+      <ol style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1rem">
+        ${TOP_REPOS.map((r, i) => {
+          const lean = `lean-${(i % 4) + 1}`;
+          const blurb = lang === "zh" ? r.blurbZh : r.blurbEn;
+          return `
+            <li>
+              <a class="sketch-card ${lean}" href="${r.url}" target="_blank" rel="noopener noreferrer"
+                 style="text-decoration:none;color:inherit;display:block;height:100%">
+                <div style="display:flex;align-items:baseline;gap:.5rem;margin-bottom:.4rem">
+                  <span class="chip chip--mustard" style="font-size:.85rem">#${i + 1}</span>
+                  <span style="margin-left:auto;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:.85rem">★ ${formatStars(r.stars)}</span>
+                </div>
+                <h3 style="margin:0 0 .35rem;font-family:'JetBrains Mono',monospace;font-size:1rem;word-break:break-word">
+                  ${escapeHtml(r.owner)}/<span style="color:var(--coral)">${escapeHtml(r.name)}</span>
+                </h3>
+                <p style="margin:0;color:var(--ink-soft);font-size:.95rem;line-height:1.45">${escapeHtml(blurb)}</p>
+              </a>
+            </li>
+          `;
+        }).join("")}
+      </ol>
     </section>
   `;
 }
