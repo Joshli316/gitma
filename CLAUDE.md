@@ -54,7 +54,7 @@ Bilingual (EN/ZH) sketchbook tutorial site that teaches GitHub for people who bu
 7. Branches & PRs (分支与合并请求) — branch tree + Local vs Remote sorter
 8. Issues, Discussions, Projects — issue template builder
 9. Pages & Actions intro — GH-vs-CF Pages comparison cards + one toy YAML
-10. Practice Lab — flashcards + all 5 games + NotebookLM PDFs
+10. Practice Lab — flashcards + all 5 games + NotebookLM PDFs + Top 10 GitHub repos resource grid (`src/content/repos.ts`)
 
 ## Tests
 - `npm test` runs both `test/smoke.ts` (23 build-output assertions) and `test/commit-score.test.ts` (11 unit tests for the Commit Translator scoring heuristic — `src/games/commit-score.ts`).
